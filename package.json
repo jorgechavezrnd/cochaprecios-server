@@ -3,10 +3,22 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:market:backend": "NODE_ENV=dev ts-node-dev --ignore-watch node_modules ./src/apps/market/backend/start.ts"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "glob": "^11.0.3",
+    "http-status": "^2.1.0",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/glob": "^8.1.0",
+    "ts-node-dev": "^2.0.0"
+  }
 }

@@ -4,7 +4,7 @@ const container = new ContainerBuilder();
 const loader = new YamlFileLoader(container);
 const env = process.env.NODE_ENV ?? 'dev';
 
-//TODO: Update to the latest version. The load method return a Promise<void> in latest version, review that.
+// TODO: Update to the latest version. The load method return a Promise<void> in latest version, review that.
 loader.load(`${__dirname}/application_${env}.yaml`);
 
 export default container;

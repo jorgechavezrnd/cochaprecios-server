@@ -1,4 +1,4 @@
-import { envs } from './config/envs';
+import { envs } from './modules/shared/infrastructure/envs';
 import { AppRoutes } from './api/routes';
 import { Server } from './api/server';
 

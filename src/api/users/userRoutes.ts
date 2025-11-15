@@ -10,7 +10,6 @@ export class UserRoutes {
   static get routes(): Router {
 
     const router = Router();
-    const reqSchema = [body('name').isString()]
 
     const userPutController = new UserPutController(
       new UserCreator(
@@ -18,7 +17,7 @@ export class UserRoutes {
       )
     );
 
-    router.put('/:id', reqSchema, validateReqSchema, (req: Request, res: Response) => {
+    router.put('/:id', userPutController.reqSchema, validateReqSchema, (req: Request, res: Response) => {
       userPutController.run(req, res);
     });
 

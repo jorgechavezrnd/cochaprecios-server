@@ -3,6 +3,7 @@ import httpStatus from 'http-status';
 
 import { UserCreator } from '../../modules/users/application/userCreator';
 import { Controller } from '../shared/controller';
+import { body, ValidationChain } from 'express-validator';
 
 export class UserPutController implements Controller {
   constructor(private readonly userCreator: UserCreator) {}
@@ -14,5 +15,9 @@ export class UserPutController implements Controller {
     await this.userCreator.run({ id, name });
 
     res.status(httpStatus.CREATED).send();
+  }
+
+  get reqSchema(): ValidationChain[] {
+    return [body('name').isString()];
   }
 }

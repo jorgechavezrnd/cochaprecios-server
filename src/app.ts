@@ -16,5 +16,7 @@ async function main() {
     routes: AppRoutes.routes,
   });
 
-  server.start();
+  server.start(() => {
+    console.log(`Server running on port ${envs.PORT}`);
+  });
 }

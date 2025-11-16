@@ -1,0 +1,5 @@
+services:
+
+  Controllers.status.StatusGetController:
+    class: ../../../status/statusGetController
+    arguments: []

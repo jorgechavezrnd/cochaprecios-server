@@ -19,12 +19,11 @@ Then('the response status code should be {int}', async (status: number) => {
 });
 
 BeforeAll(async () => {
-  await initializeContainer();
-  testServer = getTestServer();
+  testServer = await getTestServer();
   await testServer.start();
 });
 
 AfterAll(async () => {
-  testServer = getTestServer();
+  testServer = await getTestServer();
   testServer.close();
 });

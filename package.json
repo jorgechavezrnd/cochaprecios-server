@@ -8,10 +8,11 @@
     "build": "rimraf ./dist && tsc",
     "build:di": "copyfiles -u 1 \"src/**/*.yaml\" \"src/**/*.json\" \"src/**/*.html\" \"src/**/*.png\" dist",
     "start": "npm run build && npm run build:di && node dist/app.js",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "test:acceptance": "cucumber-js"
+    "test": "npm run test:unit && npm run test:acceptance",
+    "test:unit": "NODE_ENV=test jest",
+    "test:unit:watch": "NODE_ENV=test jest --watch",
+    "test:unit:coverage": "NODE_ENV=test jest --coverage",
+    "test:acceptance": "NODE_ENV=test cucumber-js"
   },
   "keywords": [],
   "author": "",

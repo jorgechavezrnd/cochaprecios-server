@@ -1,9 +1,7 @@
 import { Request, Response, Router } from 'express';
-import { UserPutController } from './userPutController';
-import { UserCreator } from '../../modules/users/application/userCreator';
-import { InMemoryUserRepository } from '../../modules/users/infrastructure/inMemoryUserRepository';
-import { body } from 'express-validator';
+import UserPutController from './userPutController';
 import { validateReqSchema } from '../shared/validator';
+import { getContainer } from '../shared/dependency-injection/container';
 
 export class UserRoutes {
 
@@ -11,11 +9,8 @@ export class UserRoutes {
 
     const router = Router();
 
-    const userPutController = new UserPutController(
-      new UserCreator(
-        new InMemoryUserRepository()
-      )
-    );
+    const container = getContainer();
+    const userPutController = container.get<UserPutController>('Controllers.users.UserPutController');
 
     router.put('/:id', userPutController.reqSchema, validateReqSchema, (req: Request, res: Response) => {
       userPutController.run(req, res);

@@ -1,4 +1,4 @@
-import { UserCreator } from '../../../../src/modules/users/application/userCreator';
+import UserCreator from '../../../../src/modules/users/application/userCreator';
 import { UserNameLengthExceeded } from '../../../../src/modules/users/domain/userNameLengthExceeded';
 import { UserRepositoryMock } from '../__mocks__/userRepositoryMock';
 import { UserMother } from '../domain/userMother';

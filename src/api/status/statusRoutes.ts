@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { getContainer } from '../shared/dependency-injection/container';
+import StatusGetController from './statusGetController';
 
 export class StatusRoutes {
 
@@ -7,7 +8,7 @@ export class StatusRoutes {
 
     const router = Router();
     const container = getContainer();
-    const statusGetController = container.get('Controllers.status.StatusGetController');
+    const statusGetController = container.get<StatusGetController>('Controllers.status.StatusGetController');
 
     router.get('/', statusGetController.run);
 

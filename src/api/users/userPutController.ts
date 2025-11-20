@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 
-import { UserCreator } from '../../modules/users/application/userCreator';
+import UserCreator from '../../modules/users/application/userCreator';
 import { Controller } from '../shared/controller';
 import { body, ValidationChain } from 'express-validator';
 
-export class UserPutController implements Controller {
+export default class UserPutController implements Controller {
   constructor(private readonly userCreator: UserCreator) {}
 
   async run(req: Request, res: Response): Promise<void> {

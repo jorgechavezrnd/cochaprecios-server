@@ -3,3 +3,7 @@ services:
   Controllers.status.StatusGetController:
     class: ../../../status/statusGetController
     arguments: []
+
+  Controllers.users.UserPutController:
+    class: ../../../users/userPutController
+    arguments: ['@Users.application.UserCreator']

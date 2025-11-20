@@ -12,6 +12,8 @@ export const envs = {
   POSTGRES_PORT: get('POSTGRES_PORT').default(5432).asPortNumber(),
   POSTGRES_PASSWORD: get('POSTGRES_PASSWORD').default('123456').asString(),
 
+  TYPEORM_SHOW_LOGS: get('TYPEORM_SHOW_LOGS').default('True').asBool(),
+
   NODE_ENV: get('NODE_ENV').default('dev').asString(),
 
 };

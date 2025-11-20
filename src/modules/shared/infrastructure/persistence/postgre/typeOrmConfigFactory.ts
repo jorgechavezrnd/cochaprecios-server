@@ -9,6 +9,7 @@ export default class TypeOrmConfigFactory {
       username: envs.POSTGRES_USER,
       password: envs.POSTGRES_PASSWORD,
       database: envs.POSTGRES_DB,
+      showLogs: envs.TYPEORM_SHOW_LOGS,
     };
   }
 }

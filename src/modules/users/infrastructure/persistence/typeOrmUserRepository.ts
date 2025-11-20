@@ -6,7 +6,7 @@ import { UserId } from '../../domain/userId';
 import { UserRepository } from '../../domain/userRepository';
 import { UserEntity } from './typeorm/userEntity';
 
-export class TypeOrmUserRepository extends TypeOrmRepository<User> implements UserRepository {
+export default class TypeOrmUserRepository extends TypeOrmRepository<User> implements UserRepository {
   public async save(user: User): Promise<void> {
     return this.persist(user);
   }

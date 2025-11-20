@@ -1,7 +1,7 @@
 import { envs } from '../../envs';
 import { TypeOrmConfig } from '../typeorm/typeOrmConfig';
 
-export class TypeOrmConfigFactory {
+export default class TypeOrmConfigFactory {
   static createConfig(): TypeOrmConfig {
     return {
       host: envs.POSTGRES_HOST,

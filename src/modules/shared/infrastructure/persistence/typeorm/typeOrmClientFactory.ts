@@ -1,7 +1,7 @@
 import { Connection, createConnection, getConnection } from 'typeorm';
 import { TypeOrmConfig } from './typeOrmConfig';
 
-export class TypeOrmClientFactory {
+export default class TypeOrmClientFactory {
   static async createClient(contextName: string, config: TypeOrmConfig): Promise<Connection> {
     try {
       const connection = await createConnection({
@@ -12,7 +12,7 @@ export class TypeOrmClientFactory {
         username: config.username,
         password: config.password,
         database: config.database,
-        entities: [`${__dirname}/../../*/infrastructure/typeorm/*{.js,.ts}`],
+        entities: [`${__dirname}/../../../../*/infrastructure/persistence/typeorm/*Entity{.js,.ts}`],
         synchronize: true,
         logging: true,
       });

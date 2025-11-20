@@ -1,8 +1,19 @@
 services:
 
+  Users.PostgresConfig:
+    factory:
+      class: ../../../../modules/shared/infrastructure/persistence/postgre/typeOrmConfigFactory
+      method: 'createConfig'
+
+  Users.ConnectionManager:
+    factory:
+      class: ../../../../modules/shared/infrastructure/persistence/typeorm/typeOrmClientFactory
+      method: 'createClient'
+    arguments: ['cochaprecios', '@Users.PostgresConfig']
+
   Users.domain.UserRepository:
-    class: ../../../../modules/users/infrastructure/persistence/inMemoryUserRepository
-    arguments: []
+    class: ../../../../modules/users/infrastructure/persistence/typeOrmUserRepository
+    arguments: ['@Users.ConnectionManager']
 
   Users.application.UserCreator:
     class: ../../../../modules/users/application/userCreator

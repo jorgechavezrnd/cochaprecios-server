@@ -34,7 +34,7 @@ BeforeAll(async () => {
 
   const container = getContainer();
   const environmentArranger: Promise<EnvironmentArranger> = container.get(
-    'Users.EnvironmentArranger'
+    'Shared.EnvironmentArranger'
   );
   await (await environmentArranger).arrange();
 
@@ -46,7 +46,7 @@ AfterAll(async () => {
 
   const container = getContainer();
   const environmentArranger: Promise<EnvironmentArranger> = container.get(
-    'Users.EnvironmentArranger'
+    'Shared.EnvironmentArranger'
   );
   await (await environmentArranger).arrange();
   await (await environmentArranger).close();

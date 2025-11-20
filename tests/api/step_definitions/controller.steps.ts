@@ -2,9 +2,9 @@ import assert from 'assert';
 import { AfterAll, BeforeAll, Given, Then } from '@cucumber/cucumber';
 import request, { Response } from 'supertest';
 
-import { getTestServer } from '../../testServer';
-import { initializeContainer } from '../../../../src/api/shared/dependency-injection/container';
-import { Server } from '../../../../src/api/server';
+import { getTestServer } from '../testServer';
+import { initializeContainer } from '../../../src/api/shared/dependency-injection/container';
+import { Server } from '../../../src/api/server';
 
 let _request: request.Test;
 let testServer: Server;
@@ -16,6 +16,16 @@ Given('I send a GET request to {string}', (route: string) => {
 
 Then('the response status code should be {int}', async (status: number) => {
   _response = await _request.expect(status);
+});
+
+Given('I send a PUT request to {string} with body:', (route: string, body: string) => {
+  _request = request(testServer.app)
+    .put(route)
+    .send(JSON.parse(body));
+});
+
+Then('the response should be empty', () => {
+  assert.deepStrictEqual(_response.body, {});
 });
 
 BeforeAll(async () => {

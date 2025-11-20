@@ -15,6 +15,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Create .env file from .env.test
+        run: |
+          cp .env.test .env
       - name: Start services with docker compose
         run: |
           docker compose up -d

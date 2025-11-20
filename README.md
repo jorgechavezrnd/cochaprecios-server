@@ -1,6 +1,6 @@
 # Cochaprecios - Server
 
-![Node CI](https://github.com/jorgechavezrnd/cochaprecios-server/workflows/Node%20CI/badge.svg?branch=main)
+![Node CI](https://github.com/jorgechavezrnd/cochaprecios-server/actions/workflows/nodejs.yml/badge.svg?branch=main)
 
 ##  TODOs que se deben resolver cuando se pueda
 

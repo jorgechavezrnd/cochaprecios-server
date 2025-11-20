@@ -12,3 +12,12 @@ Feature: Create a new User
     """
     Then the response status code should be 201
     And the response should be empty
+
+  Scenario: An invalid user
+    Given I send a PUT request to "/api/users/0A1A0805-B22B-4179-A09C-B4F21F2994FB" with body:
+    """
+    {
+      "name": 5
+    }
+    """
+    Then the response status code should be 422

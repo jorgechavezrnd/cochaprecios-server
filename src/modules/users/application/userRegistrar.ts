@@ -4,7 +4,7 @@ import { UserName } from '../domain/userName';
 import { UserRepository } from '../domain/userRepository';
 import { CreateUserRequest } from './createUserRequest';
 
-export default class UserCreator {
+export default class UserRegistrar {
   private readonly repository: UserRepository;
 
   constructor(repository: UserRepository) {

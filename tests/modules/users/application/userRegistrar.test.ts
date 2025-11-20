@@ -1,24 +1,24 @@
-import UserCreator from '../../../../src/modules/users/application/userCreator';
+import UserRegistrar from '../../../../src/modules/users/application/userRegistrar';
 import { UserNameLengthExceeded } from '../../../../src/modules/users/domain/userNameLengthExceeded';
 import { UserRepositoryMock } from '../__mocks__/userRepositoryMock';
 import { UserMother } from '../domain/userMother';
 import { CreateUserRequestMother } from './createUserRequestMother';
 
 let repository: UserRepositoryMock;
-let creator: UserCreator;
+let registrar: UserRegistrar;
 
 beforeEach(() => {
   repository = new UserRepositoryMock();
-  creator = new UserCreator(repository);
+  registrar = new UserRegistrar(repository);
 });
 
-describe('UserCreator', () => {
-  it('should create a valid user', async () => {
+describe('UserRegistrar', () => {
+  it('should register a valid user', async () => {
     const request = CreateUserRequestMother.random();
 
     const user = UserMother.fromRequest(request);
 
-    await creator.run(request);
+    await registrar.run(request);
 
     repository.assertLastSavedUserIs(user);
   });
@@ -29,7 +29,7 @@ describe('UserCreator', () => {
 
       const user = UserMother.fromRequest(request);
 
-      creator.run(request);
+      registrar.run(request);
 
       repository.assertLastSavedUserIs(user);
     }).toThrow(UserNameLengthExceeded);

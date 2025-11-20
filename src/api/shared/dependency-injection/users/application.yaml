@@ -4,6 +4,6 @@ services:
     class: ../../../../modules/users/infrastructure/persistence/typeOrmUserRepository
     arguments: ['@Shared.ConnectionManager']
 
-  Users.application.UserCreator:
-    class: ../../../../modules/users/application/userCreator
+  Users.application.UserRegistrar:
+    class: ../../../../modules/users/application/userRegistrar
     arguments: ['@Users.domain.UserRepository']

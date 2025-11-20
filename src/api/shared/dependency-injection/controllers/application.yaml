@@ -6,4 +6,4 @@ services:
 
   Controllers.users.UserPutController:
     class: ../../../users/userPutController
-    arguments: ['@Users.application.UserCreator']
+    arguments: ['@Users.application.UserRegistrar']

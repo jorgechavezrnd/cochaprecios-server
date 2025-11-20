@@ -21,7 +21,6 @@
     "test:unit:coverage": "NODE_ENV=test jest --coverage",
     "test:acceptance": "NODE_ENV=test cucumber-js"
   },
-  "type": "commonjs",
   "devDependencies": {
     "@cucumber/cucumber": "^12.2.0",
     "@faker-js/faker": "^8.4.1",

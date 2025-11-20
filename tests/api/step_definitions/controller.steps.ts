@@ -3,8 +3,9 @@ import { AfterAll, BeforeAll, Given, Then } from '@cucumber/cucumber';
 import request, { Response } from 'supertest';
 
 import { getTestServer } from '../testServer';
-import { initializeContainer } from '../../../src/api/shared/dependency-injection/container';
+import { getContainer, initializeContainer } from '../../../src/api/shared/dependency-injection/container';
 import { Server } from '../../../src/api/server';
+import { EnvironmentArranger } from '../../modules/shared/infrastructure/arranger/environmentArranger';
 
 let _request: request.Test;
 let testServer: Server;
@@ -30,10 +31,25 @@ Then('the response should be empty', () => {
 
 BeforeAll(async () => {
   testServer = await getTestServer();
+
+  const container = getContainer();
+  const environmentArranger: Promise<EnvironmentArranger> = container.get(
+    'Users.EnvironmentArranger'
+  );
+  await (await environmentArranger).arrange();
+
   await testServer.start();
 });
 
 AfterAll(async () => {
   testServer = await getTestServer();
+
+  const container = getContainer();
+  const environmentArranger: Promise<EnvironmentArranger> = container.get(
+    'Users.EnvironmentArranger'
+  );
+  await (await environmentArranger).arrange();
+  await (await environmentArranger).close();
+
   testServer.close();
 });

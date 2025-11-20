@@ -1,2 +1,7 @@
 imports:
   - { resource: ./application.yaml }
+
+services:
+  Users.EnvironmentArranger:
+    class: ../../../../../tests/modules/shared/infrastructure/typeorm/typeOrmEnvironmentArranger
+    arguments: ['@Users.ConnectionManager']

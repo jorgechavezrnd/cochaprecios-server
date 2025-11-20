@@ -1,5 +1,7 @@
 # Cochaprecios - Server
 
+![Node CI](https://github.com/jorgechavezrnd/cochaprecios-server/workflows/Node%20CI/badge.svg?branch=master)
+
 ##  TODOs que se deben resolver cuando se pueda
 
 - **Investigar solución para Jest con módulos ESM**: Actualmente `uuid` está en v8.3.2 en lugar de v13+ debido a que Jest no puede procesar módulos ESM. Investigar configuración con `extensionsToTreatAsEsm` y `transform` de ts-jest para soportar versiones modernas. Nota: Se tuvo que instalar `@types/uuid` porque la v8 no incluye tipos TypeScript integrados (las versiones v9+ sí los incluyen).

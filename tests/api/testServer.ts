@@ -1,5 +1,5 @@
 import { AppRoutes } from '../../src/api/routes';
-import { envs } from '../../src/modules/shared/infrastructure/envs';
+import { envs } from '../../src/modules/shared/infrastructure/persistence/env/envs';
 import { Server } from '../../src/api/server';
 import { initializeContainer } from '../../src/api/shared/dependency-injection/container';
 

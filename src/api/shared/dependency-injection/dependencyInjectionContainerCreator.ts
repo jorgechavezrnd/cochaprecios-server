@@ -1,5 +1,5 @@
 import { ContainerBuilder, YamlFileLoader } from 'node-dependency-injection';
-import { envs } from '../../../modules/shared/infrastructure/envs';
+import { envs } from '../../../modules/shared/infrastructure/persistence/env/envs';
 
 export class DependencyInjectionContainerCreator {
   private _container: ContainerBuilder;

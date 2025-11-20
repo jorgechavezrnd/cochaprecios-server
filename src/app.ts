@@ -1,4 +1,4 @@
-import { envs } from './modules/shared/infrastructure/envs';
+import { envs } from './modules/shared/infrastructure/persistence/env/envs';
 import { AppRoutes } from './api/routes';
 import { Server } from './api/server';
 import { initializeContainer } from './api/shared/dependency-injection/container';

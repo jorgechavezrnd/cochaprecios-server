@@ -1,4 +1,4 @@
-import { envs } from '../../envs';
+import { envs } from '../env/envs';
 import { TypeOrmConfig } from '../typeorm/typeOrmConfig';
 
 export default class TypeOrmConfigFactory {

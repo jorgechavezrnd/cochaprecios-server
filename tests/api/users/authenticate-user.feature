@@ -3,21 +3,23 @@ Feature: Authenticate a User
   As a user
   I want to authenticate with my credentials
 
+
   Scenario: Authenticate with valid credentials
-    Given I send a PUT request to "/api/users/1B2B0805-C33C-4279-B09C-B4F21F2994FC" with body:
+    Given I send a PUT request to "/api/users/6A5EC04D-6981-43B1-AD95-9F4C8891D6D0" with body:
     """
     {
-      "name": "Ana Torres",
-      "username": "ana2024",
-      "email": "ana@example.com",
+      "name": "Elena Ruiz",
+      "username": "elena.ruiz6",
+      "email": "elena.ruiz6@example.com",
       "password": "superpass456",
       "role": "viewer"
     }
     """
+    Then the response status code should be 201
     When I send a POST request to "/api/users/auth" with body:
     """
     {
-      "email": "ana@example.com",
+      "email": "elena.ruiz6@example.com",
       "password": "superpass456"
     }
     """
@@ -25,49 +27,53 @@ Feature: Authenticate a User
     And the response should contain:
     """
     {
-      "id": "1B2B0805-C33C-4279-B09C-B4F21F2994FC",
-      "name": "Ana Torres",
-      "username": "ana2024",
-      "email": "ana@example.com",
+      "id": "6A5EC04D-6981-43B1-AD95-9F4C8891D6D0",
+      "name": "Elena Ruiz",
+      "username": "elena.ruiz6",
+      "email": "elena.ruiz6@example.com",
       "role": "viewer"
     }
     """
+
 
   Scenario: Authenticate with invalid email
     Given I send a POST request to "/api/users/auth" with body:
     """
     {
-      "email": "nonexistent@example.com",
+      "email": "no.user7@example.com",
       "password": "password123"
     }
     """
     Then the response status code should be 401
 
+
   Scenario: Authenticate with invalid password
-    Given I send a PUT request to "/api/users/0A1A0805-B22B-4179-A09C-B4F21F2994FB" with body:
+    Given I send a PUT request to "/api/users/550E8400-E29B-41D4-A716-446655440000" with body:
     """
     {
-      "name": "Pepe Garcia",
-      "username": "pepe123",
-      "email": "pepe@example.com",
-      "password": "password123",
+      "name": "Miguel Torres",
+      "username": "miguel.torres7",
+      "email": "miguel.torres7@example.com",
+      "password": "passwordE5",
       "role": "viewer"
     }
     """
+    Then the response status code should be 201
     When I send a POST request to "/api/users/auth" with body:
     """
     {
-      "email": "pepe@example.com",
+      "email": "miguel.torres7@example.com",
       "password": "wrongpassword"
     }
     """
     Then the response status code should be 401
 
+
   Scenario: Authenticate with missing credentials
     Given I send a POST request to "/api/users/auth" with body:
     """
     {
-      "email": "pepe@example.com"
+      "email": "miguel.torres7@example.com"
     }
     """
     Then the response status code should be 422

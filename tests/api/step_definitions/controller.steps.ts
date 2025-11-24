@@ -15,18 +15,33 @@ Given('I send a GET request to {string}', (route: string) => {
   _request = request(testServer.app).get(route);
 });
 
-Then('the response status code should be {int}', async (status: number) => {
-  _response = await _request.expect(status);
-});
-
 Given('I send a PUT request to {string} with body:', (route: string, body: string) => {
   _request = request(testServer.app)
     .put(route)
     .send(JSON.parse(body));
 });
 
+Given('I send a POST request to {string} with body:', (route: string, body: string) => {
+  _request = request(testServer.app)
+    .post(route)
+    .send(JSON.parse(body));
+});
+
+Then('the response status code should be {int}', async (status: number) => {
+  _response = await _request.expect(status);
+});
+
 Then('the response should be empty', () => {
   assert.deepStrictEqual(_response.body, {});
+});
+
+Then('the response should contain:', (body: string) => {
+  const expectedBody = JSON.parse(body);
+  const actualBody = _response.body;
+  
+  Object.keys(expectedBody).forEach(key => {
+    assert.strictEqual(actualBody[key], expectedBody[key], `Expected ${key} to be ${expectedBody[key]} but got ${actualBody[key]}`);
+  });
 });
 
 BeforeAll(async () => {

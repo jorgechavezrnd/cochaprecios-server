@@ -1,4 +1,5 @@
 import express, { Router } from 'express';
+import { errorHandler } from './shared/errorHandler';
 import path from 'path';
 
 interface Options {
@@ -32,7 +33,11 @@ export class Server {
     this.app.use(express.static(this.publicPath));
 
     //* Routes
+
     this.app.use(this.routes);
+
+    // Error handler global
+    this.app.use(errorHandler);
 
     //* SPA /^\/(?!api).*/  <== Only if it does not begin with the world api
     this.app.get(/^\/(?!api).*/, (req, res) => {

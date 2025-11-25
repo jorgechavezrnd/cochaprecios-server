@@ -36,7 +36,7 @@ export class Server {
 
     this.app.use(this.routes);
 
-    // Error handler global
+    //* Error handler global
     this.app.use(errorHandler);
 
     //* SPA /^\/(?!api).*/  <== Only if it does not begin with the world api

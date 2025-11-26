@@ -24,16 +24,7 @@ Feature: Authenticate a User
     }
     """
     Then the response status code should be 200
-    And the response should contain:
-    """
-    {
-      "id": "6A5EC04D-6981-43B1-AD95-9F4C8891D6D0",
-      "name": "Elena Ruiz",
-      "username": "elena.ruiz6",
-      "email": "elena.ruiz6@example.com",
-      "role": "viewer"
-    }
-    """
+    And the response should contain field "token"
 
 
   Scenario: Authenticate with invalid email

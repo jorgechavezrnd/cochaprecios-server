@@ -7,6 +7,9 @@ services:
   Users.domain.UserPasswordHasher:
     class: ../../../../modules/users/infrastructure/bcryptPasswordHasher
 
+  Users.domain.UserTokenSigner:
+    class: ../../../../modules/users/infrastructure/jwtTokenSigner
+
   Users.application.UserRegistrar:
     class: ../../../../modules/users/application/userRegistrar
     arguments: ['@Users.domain.UserRepository', '@Users.domain.UserPasswordHasher']

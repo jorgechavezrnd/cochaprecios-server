@@ -14,7 +14,7 @@ services:
 
   Controllers.users.UserPostAuthController:
     class: ../../../users/userPostAuthController
-    arguments: ['@Users.application.UserAuthenticator']
+    arguments: ['@Users.application.UserAuthenticator', '@Users.domain.UserTokenSigner']
 
   Controllers.categories.CategoryPutController:
     class: ../../../categories/categoryPutController

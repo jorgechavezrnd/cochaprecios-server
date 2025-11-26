@@ -16,4 +16,7 @@ export const envs = {
 
   NODE_ENV: get('NODE_ENV').default('dev').asString(),
 
+  JWT_SECRET: get('JWT_SECRET').default('supersecretjwt').asString(),
+  JWT_EXPIRES_IN: get('JWT_EXPIRES_IN').default('1d').asString(),
+
 };

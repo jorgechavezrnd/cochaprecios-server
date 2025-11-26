@@ -6,6 +6,7 @@ import CategoryGetAllController from './categoryGetAllController';
 import CategoryDeleteController from './categoryDeleteController';
 import { validateReqSchema } from '../shared/validator';
 import { getContainer } from '../shared/dependency-injection/container';
+import { authenticate, requireAdmin } from '../shared/auth';
 
 export class CategoryRoutes {
   static get routes(): Router {
@@ -16,7 +17,7 @@ export class CategoryRoutes {
     const categoryGetAllController = container.get<CategoryGetAllController>('Controllers.categories.CategoryGetAllController');
     const categoryDeleteController = container.get<CategoryDeleteController>('Controllers.categories.CategoryDeleteController');
 
-    router.put('/:id', categoryPutController.reqSchema, validateReqSchema, (req: Request, res: Response, next: NextFunction) => {
+    router.put('/:id', authenticate, requireAdmin, categoryPutController.reqSchema, validateReqSchema, (req: Request, res: Response, next: NextFunction) => {
       categoryPutController.run(req, res, next);
     });
 
@@ -28,7 +29,7 @@ export class CategoryRoutes {
       categoryGetAllController.run(req, res, next);
     });
 
-    router.delete('/:id', (req: Request, res: Response, next: NextFunction) => {
+    router.delete('/:id', authenticate, requireAdmin, (req: Request, res: Response, next: NextFunction) => {
       categoryDeleteController.run(req, res, next);
     });
 

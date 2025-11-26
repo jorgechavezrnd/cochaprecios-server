@@ -7,10 +7,10 @@ export class UserNameMother {
   }
 
   static random(): UserName {
-    return this.create(WordMother.random());
+    return this.create(WordMother.randomWithLength({ min: 3, max: 30 }));
   }
 
   static invalidName(): string {
-    return 'a'.repeat(40);
+    return 'a'.repeat(31);
   }
 }

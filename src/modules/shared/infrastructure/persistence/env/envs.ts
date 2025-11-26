@@ -14,9 +14,9 @@ export const envs = {
 
   TYPEORM_SHOW_LOGS: get('TYPEORM_SHOW_LOGS').default('True').asBool(),
 
-  NODE_ENV: get('NODE_ENV').default('dev').asString(),
-
   JWT_SECRET: get('JWT_SECRET').default('supersecretjwt').asString(),
   JWT_EXPIRES_IN: get('JWT_EXPIRES_IN').default('1d').asString(),
+
+  NODE_ENV: get('NODE_ENV').default('dev').asString(),
 
 };

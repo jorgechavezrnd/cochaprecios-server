@@ -1,5 +1,5 @@
 import { UserPassword } from '../../../../src/modules/users/domain/userPassword';
-import { WordMother } from '../../shared/domain/wordMother';
+import { PasswordMother } from '../../shared/domain/passwordMother';
 
 export class UserPasswordMother {
   static create(value: string): UserPassword {
@@ -7,10 +7,10 @@ export class UserPasswordMother {
   }
 
   static random(): UserPassword {
-    return this.create(WordMother.random() + '123456');
+    return this.create(PasswordMother.randomWithLength(8));
   }
 
   static invalidPassword(): string {
-    return '12345'; // Too short
+    return PasswordMother.randomWithLength(5);
   }
 }

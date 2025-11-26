@@ -3,7 +3,7 @@ import { AfterAll, BeforeAll, Given, Then } from '@cucumber/cucumber';
 import request, { Response } from 'supertest';
 
 import { getTestServer } from '../testServer';
-import { getContainer, initializeContainer } from '../../../src/api/shared/dependency-injection/container';
+import { getContainer } from '../../../src/api/shared/dependency-injection/container';
 import { Server } from '../../../src/api/server';
 import { EnvironmentArranger } from '../../modules/shared/infrastructure/arranger/environmentArranger';
 
@@ -25,6 +25,11 @@ Given('I send a POST request to {string} with body:', (route: string, body: stri
   _request = request(testServer.app)
     .post(route)
     .send(JSON.parse(body));
+});
+
+Given('I send a DELETE request to {string}', function (route: string) {
+  _request = request(testServer.app)
+    .delete(route);
 });
 
 Then('the response status code should be {int}', async (status: number) => {

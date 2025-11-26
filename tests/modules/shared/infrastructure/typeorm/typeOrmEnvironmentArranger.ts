@@ -11,6 +11,15 @@ export default class TypeOrmEnvironmentArranger extends EnvironmentArranger {
 		await this.cleanDatabase();
 	}
 
+	public async arrangeTable(tableName: string): Promise<void> {
+		try {
+			const repository = (await this._client).getRepository(tableName);
+			await repository.query(`TRUNCATE TABLE ${tableName}`);
+		} catch (error) {
+			throw new Error(`Unable to clean test table: ${error}`);
+		}
+	}
+
 	protected async cleanDatabase(): Promise<void> {
 		const entities = await this.entities();
 

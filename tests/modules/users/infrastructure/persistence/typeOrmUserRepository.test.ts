@@ -18,11 +18,11 @@ beforeAll(async () => {
 });
 
 beforeEach(async() => {
-  await (await environmentArranger).arrange();
+  await (await environmentArranger).arrangeTable('users');
 });
 
 afterAll(async () => {
-  await (await environmentArranger).arrange();
+  await (await environmentArranger).arrangeTable('users');
   await (await environmentArranger).close();
 });
 

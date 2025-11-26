@@ -17,11 +17,11 @@ describe('TypeOrmCategoryRepository', () => {
   });
 
   beforeEach(async () => {
-    await (await environmentArranger).arrange();
+    await (await environmentArranger).arrangeTable('categories');
   });
 
   afterAll(async () => {
-    await (await environmentArranger).arrange();
+    await (await environmentArranger).arrangeTable('categories');
     await (await environmentArranger).close();
   });
 

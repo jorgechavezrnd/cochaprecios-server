@@ -12,7 +12,7 @@ export const CategoryEntity = new EntitySchema<Category>({
   target: Category,
   columns: {
     id: {
-      type: 'uuid',
+      type: String,
       primary: true,
       transformer: ValueObjectTransformer(CategoryId),
     },

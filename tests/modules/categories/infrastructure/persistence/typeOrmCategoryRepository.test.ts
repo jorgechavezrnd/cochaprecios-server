@@ -2,7 +2,7 @@ import { getContainer, initializeContainer } from '../../../../../src/api/shared
 import { CategoryRepository } from '../../../../../src/modules/categories/domain/categoryRepository';
 import { EnvironmentArranger } from '../../../shared/infrastructure/arranger/environmentArranger';
 import { CategoryMother } from '../../domain/categoryMother';
-import { CategoryIdMother } from '../../domain/categoryIdMother';
+import { CategoryIdMother } from '../../../shared/domain/categoryIdMother';
 import { CategoryNameMother } from '../../domain/categoryNameMother';
 
 describe('TypeOrmCategoryRepository', () => {

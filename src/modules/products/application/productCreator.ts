@@ -4,7 +4,7 @@ import { Product } from '../domain/product';
 import { ProductId } from '../domain/productId';
 import { ProductName } from '../domain/productName';
 import { ProductDescription } from '../domain/productDescription';
-import { ProductCategoryId } from '../domain/productCategoryId';
+import { CategoryId } from '../../shared/domain/categories/categoryId';
 import { ProductImageUrl } from '../domain/productImageUrl';
 
 export default class ProductCreator {
@@ -16,7 +16,7 @@ export default class ProductCreator {
       new ProductId(request.id),
       new ProductName(request.name),
       new ProductDescription(request.description),
-      new ProductCategoryId(request.categoryId),
+      new CategoryId(request.categoryId),
       request.imageUrl ? new ProductImageUrl(request.imageUrl) : undefined,
       existing?.createdAt,
       new Date()
@@ -25,4 +25,3 @@ export default class ProductCreator {
     await this.repository.save(product);
   }
 }
-

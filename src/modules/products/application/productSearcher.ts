@@ -1,7 +1,7 @@
 import { ProductRepository } from '../domain/productRepository';
 import { Product } from '../domain/product';
 import { ProductName } from '../domain/productName';
-import { ProductCategoryId } from '../domain/productCategoryId';
+import { CategoryId } from '../../shared/domain/categories/categoryId';
 
 export default class ProductSearcher {
   constructor(private readonly repository: ProductRepository) {}
@@ -12,9 +12,8 @@ export default class ProductSearcher {
       return found ? [found] : [];
     }
     if (params.categoryId) {
-      return this.repository.findByCategoryId(new ProductCategoryId(params.categoryId));
+      return this.repository.findByCategoryId(new CategoryId(params.categoryId));
     }
     return this.repository.findAll();
   }
 }
-

@@ -1,6 +1,6 @@
 import { CategoryRepository } from '../../../../src/modules/categories/domain/categoryRepository';
 import { Category } from '../../../../src/modules/categories/domain/category';
-import { CategoryId } from '../../../../src/modules/categories/domain/categoryId';
+import { CategoryId } from '../../../../src/modules/shared/domain/categories/categoryId';
 import { CategoryName } from '../../../../src/modules/categories/domain/categoryName';
 import { Nullable } from '../../../../src/modules/shared/domain/nullable';
 

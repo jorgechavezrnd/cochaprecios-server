@@ -5,4 +5,3 @@ export interface CreateProductRequest {
   categoryId: string;
   imageUrl?: string;
 }
-

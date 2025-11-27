@@ -2,7 +2,7 @@ import { ProductRepository } from '../domain/productRepository';
 import { ProductId } from '../domain/productId';
 import { ProductName } from '../domain/productName';
 import { ProductDescription } from '../domain/productDescription';
-import { ProductCategoryId } from '../domain/productCategoryId';
+import { CategoryId } from '../../shared/domain/categories/categoryId';
 import { ProductImageUrl } from '../domain/productImageUrl';
 
 export interface UpdateProductRequest {
@@ -29,11 +29,10 @@ export default class ProductUpdater {
 
     product.name = new ProductName(request.name);
     product.description = new ProductDescription(request.description);
-    product.categoryId = new ProductCategoryId(request.categoryId);
+    product.categoryId = new CategoryId(request.categoryId);
     product.imageUrl = request.imageUrl ? new ProductImageUrl(request.imageUrl) : undefined;
     product.updatedAt = new Date();
 
     await this.repository.save(product);
   }
 }
-

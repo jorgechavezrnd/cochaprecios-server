@@ -11,4 +11,3 @@ export class ProductName extends StringValueObject {
     if (value.length > 60) throw new Error('Product name length exceeded');
   }
 }
-

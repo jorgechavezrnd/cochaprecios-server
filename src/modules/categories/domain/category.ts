@@ -1,5 +1,5 @@
 import { AggregateRoot } from '../../shared/domain/aggregateRoot';
-import { CategoryId } from './categoryId';
+import { CategoryId } from '../../shared/domain/categories/categoryId';
 import { CategoryName } from './categoryName';
 import { CategoryDescription } from './categoryDescription';
 

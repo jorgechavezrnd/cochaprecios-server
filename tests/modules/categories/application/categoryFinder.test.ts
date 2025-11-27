@@ -1,7 +1,7 @@
 import CategoryFinder from '../../../../src/modules/categories/application/categoryFinder';
 import { CategoryRepositoryMock } from '../__mocks__/categoryRepositoryMock';
 import { CategoryMother } from '../domain/categoryMother';
-import { CategoryIdMother } from '../domain/categoryIdMother';
+import { CategoryIdMother } from '../../shared/domain/categoryIdMother';
 import { CategoryNameMother } from '../domain/categoryNameMother';
 
 describe('CategoryFinder', () => {

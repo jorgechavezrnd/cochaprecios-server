@@ -3,7 +3,7 @@ import { ProductRepositoryMock } from '../__mocks__/productRepositoryMock';
 import { ProductMother } from '../domain/productMother';
 import { ProductNameMother } from '../domain/productNameMother';
 import { ProductDescriptionMother } from '../domain/productDescriptionMother';
-import { ProductCategoryIdMother } from '../domain/productCategoryIdMother';
+import { CategoryIdMother } from '../../shared/domain/categoryIdMother';
 
 describe('ProductUpdater', () => {
   let repository: ProductRepositoryMock;
@@ -21,7 +21,7 @@ describe('ProductUpdater', () => {
 
     const newName = ProductNameMother.create('Updated Product Name');
     const newDescription = ProductDescriptionMother.create('Updated Description');
-    const newCategoryId = ProductCategoryIdMother.random();
+    const newCategoryId = CategoryIdMother.random();
 
     await updater.run({
       id: product.id.value,
@@ -41,7 +41,7 @@ describe('ProductUpdater', () => {
 
   it('should throw if product does not exist', async () => {
     repository.whenFindByIdReturn(null);
-    const nonexistent = ProductCategoryIdMother.random();
+    const nonexistent = CategoryIdMother.random();
     await expect(
       updater.run({
         id: '3FA85F64-5717-4562-B3FC-2C963F66AFA6',
@@ -68,4 +68,3 @@ describe('ProductUpdater', () => {
     ).rejects.toThrow(`Product with name ${p2.name.value} already exists`);
   });
 });
-

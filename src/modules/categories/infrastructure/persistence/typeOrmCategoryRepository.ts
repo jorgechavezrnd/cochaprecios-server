@@ -1,6 +1,6 @@
 import { EntitySchema } from 'typeorm';
 import { Category } from '../../domain/category';
-import { CategoryId } from '../../domain/categoryId';
+import { CategoryId } from '../../../shared/domain/categories/categoryId';
 import { CategoryName } from '../../domain/categoryName';
 import { CategoryRepository } from '../../domain/categoryRepository';
 import { Nullable } from '../../../shared/domain/nullable';

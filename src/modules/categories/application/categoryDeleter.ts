@@ -1,5 +1,5 @@
 import { CategoryRepository } from '../domain/categoryRepository';
-import { CategoryId } from '../domain/categoryId';
+import { CategoryId } from '../../shared/domain/categories/categoryId';
 
 export default class CategoryDeleter {
   private readonly repository: CategoryRepository;

@@ -1,7 +1,7 @@
 import { EntitySchema } from 'typeorm';
 
 import { Category } from '../../../domain/category';
-import { CategoryId } from '../../../domain/categoryId';
+import { CategoryId } from '../../../../shared/domain/categories/categoryId';
 import { CategoryName } from '../../../domain/categoryName';
 import { CategoryDescription } from '../../../domain/categoryDescription';
 import { ValueObjectTransformer } from '../../../../shared/infrastructure/persistence/typeorm/valueObjectTransformer';

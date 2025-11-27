@@ -1,5 +1,5 @@
 import { CategoryRepository } from '../domain/categoryRepository';
-import { CategoryId } from '../domain/categoryId';
+import { CategoryId } from '../../shared/domain/categories/categoryId';
 import { CategoryName } from '../domain/categoryName';
 import { CategoryDescription } from '../domain/categoryDescription';
 

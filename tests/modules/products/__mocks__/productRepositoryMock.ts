@@ -2,7 +2,7 @@ import { ProductRepository } from '../../../../src/modules/products/domain/produ
 import { Product } from '../../../../src/modules/products/domain/product';
 import { ProductId } from '../../../../src/modules/products/domain/productId';
 import { ProductName } from '../../../../src/modules/products/domain/productName';
-import { ProductCategoryId } from '../../../../src/modules/products/domain/productCategoryId';
+import { CategoryId } from '../../../../src/modules/shared/domain/categories/categoryId';
 import { Nullable } from '../../../../src/modules/shared/domain/nullable';
 
 export class ProductRepositoryMock implements ProductRepository {
@@ -15,7 +15,7 @@ export class ProductRepositoryMock implements ProductRepository {
   async save(product: Product): Promise<void> { await this.mockSave(product); }
   async findById(id: ProductId): Promise<Nullable<Product>> { return await this.mockFindById(id); }
   async findByName(name: ProductName): Promise<Nullable<Product>> { return await this.mockFindByName(name); }
-  async findByCategoryId(categoryId: ProductCategoryId): Promise<Product[]> { return await this.mockFindByCategoryId(categoryId); }
+  async findByCategoryId(categoryId: CategoryId): Promise<Product[]> { return await this.mockFindByCategoryId(categoryId); }
   async findAll(): Promise<Product[]> { return await this.mockFindAll(); }
 
   assertLastSavedProductIs(expected: Product): void {

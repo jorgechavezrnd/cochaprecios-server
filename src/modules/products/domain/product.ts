@@ -2,14 +2,14 @@ import { AggregateRoot } from '../../shared/domain/aggregateRoot';
 import { ProductId } from './productId';
 import { ProductName } from './productName';
 import { ProductDescription } from './productDescription';
-import { ProductCategoryId } from './productCategoryId';
+import { CategoryId } from '../../shared/domain/categories/categoryId';
 import { ProductImageUrl } from './productImageUrl';
 
 export class Product extends AggregateRoot {
   readonly id: ProductId;
   name: ProductName;
   description: ProductDescription;
-  categoryId: ProductCategoryId;
+  categoryId: CategoryId;
   imageUrl?: ProductImageUrl;
   readonly createdAt?: Date;
   updatedAt?: Date;
@@ -18,7 +18,7 @@ export class Product extends AggregateRoot {
     id: ProductId,
     name: ProductName,
     description: ProductDescription,
-    categoryId: ProductCategoryId,
+    categoryId: CategoryId,
     imageUrl?: ProductImageUrl,
     createdAt?: Date,
     updatedAt?: Date
@@ -46,7 +46,7 @@ export class Product extends AggregateRoot {
       new ProductId(plain.id),
       new ProductName(plain.name),
       new ProductDescription(plain.description),
-      new ProductCategoryId(plain.categoryId),
+      new CategoryId(plain.categoryId),
       plain.imageUrl ? new ProductImageUrl(plain.imageUrl) : undefined,
       plain.createdAt,
       plain.updatedAt
@@ -65,4 +65,3 @@ export class Product extends AggregateRoot {
     };
   }
 }
-

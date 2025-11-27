@@ -4,7 +4,7 @@ import { CategoryMother } from '../domain/categoryMother';
 import { CategoryNameMother } from '../domain/categoryNameMother';
 import { CategoryDescriptionMother } from '../domain/categoryDescriptionMother';
 import { UuidMother } from '../../shared/domain/uuidMother';
-import { CategoryIdMother } from '../domain/categoryIdMother';
+import { CategoryIdMother } from '../../shared/domain/categoryIdMother';
 
 describe('CategoryCreator', () => {
   let repository: CategoryRepositoryMock;

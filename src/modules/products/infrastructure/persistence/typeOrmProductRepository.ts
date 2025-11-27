@@ -4,7 +4,7 @@ import { TypeOrmRepository } from '../../../shared/infrastructure/persistence/ty
 import { Product } from '../../domain/product';
 import { ProductId } from '../../domain/productId';
 import { ProductName } from '../../domain/productName';
-import { ProductCategoryId } from '../../domain/productCategoryId';
+import { CategoryId } from '../../../shared/domain/categories/categoryId';
 import { ProductRepository } from '../../domain/productRepository';
 import { ProductEntity } from './typeorm/productEntity';
 
@@ -23,7 +23,7 @@ export default class TypeOrmProductRepository extends TypeOrmRepository<Product>
     return repository.findOne({ where: { name } });
   }
 
-  public async findByCategoryId(categoryId: ProductCategoryId): Promise<Product[]> {
+  public async findByCategoryId(categoryId: CategoryId): Promise<Product[]> {
     const repository = await this.repository();
     return repository.find({ where: { categoryId } });
   }
@@ -37,4 +37,3 @@ export default class TypeOrmProductRepository extends TypeOrmRepository<Product>
     return ProductEntity;
   }
 }
-

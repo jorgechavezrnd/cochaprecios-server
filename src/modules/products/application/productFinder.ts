@@ -10,4 +10,3 @@ export default class ProductFinder {
     return this.repository.findById(new ProductId(id));
   }
 }
-

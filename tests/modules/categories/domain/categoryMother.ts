@@ -1,9 +1,9 @@
 import { Category } from '../../../../src/modules/categories/domain/category';
-import { CategoryId } from '../../../../src/modules/categories/domain/categoryId';
+import { CategoryId } from '../../../../src/modules/shared/domain/categories/categoryId';
 import { CategoryName } from '../../../../src/modules/categories/domain/categoryName';
 import { CategoryDescription } from '../../../../src/modules/categories/domain/categoryDescription';
 import { CreateCategoryRequest } from '../../../../src/modules/categories/application/createCategoryRequest';
-import { CategoryIdMother } from './categoryIdMother';
+import { CategoryIdMother } from '../../shared/domain/categoryIdMother';
 import { CategoryNameMother } from './categoryNameMother';
 import { CategoryDescriptionMother } from './categoryDescriptionMother';
 

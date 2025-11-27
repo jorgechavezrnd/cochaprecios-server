@@ -11,4 +11,3 @@ export class ProductDescription extends StringValueObject {
     if (value.length > 255) throw new Error('Product description too long');
   }
 }
-

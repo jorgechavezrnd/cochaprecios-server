@@ -127,6 +127,100 @@
 			]
 		},
 		{
+			"name": "Stores",
+			"item": [
+				{
+					"name": "Create Store",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" },
+							{ "key": "Authorization", "value": "Bearer {{token}}" }
+						],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Supermercado Central\",\n  \"address\": \"Av. Principal #123\",\n  \"phone\": \"+591-444-555-666\"\n}"
+                        },
+						"url": {
+							"raw": "{{base_url}}/api/stores/44556677-8899-4AA0-8BB1-223344556677",
+							"host": ["{{base_url}}"],
+							"path": ["api", "stores", "44556677-8899-4AA0-8BB1-223344556677"]
+						},
+						"description": "Crea una tienda. Protegido: requiere admin. Retorna 201 Created."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Store",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" },
+							{ "key": "Authorization", "value": "Bearer {{token}}" }
+						],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Supermercado Central 2\",\n  \"address\": \"Av. Principal #124\",\n  \"phone\": \"+591-777-888-999\"\n}"
+                        },
+						"url": {
+							"raw": "{{base_url}}/api/stores/1122AABB-CCDD-4EE1-8FF2-334455667788",
+							"host": ["{{base_url}}"],
+							"path": ["api", "stores", "1122AABB-CCDD-4EE1-8FF2-334455667788"]
+						},
+						"description": "Actualiza una tienda existente. Protegido: requiere admin. Retorna 200 OK."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Store by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/stores/44556677-8899-4AA0-8BB1-223344556677",
+							"host": ["{{base_url}}"],
+							"path": ["api", "stores", "44556677-8899-4AA0-8BB1-223344556677"]
+						},
+						"description": "Obtiene una tienda por ID. Retorna 200 OK."
+					},
+					"response": []
+				},
+				{
+					"name": "Search Stores by Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/stores?name=Supermercado%20Central",
+							"host": ["{{base_url}}"],
+							"path": ["api", "stores"],
+							"query": [
+								{ "key": "name", "value": "Supermercado Central" }
+							]
+						},
+					"description": "Busca tiendas por nombre. Retorna 200 OK."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Store",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}" }
+						],
+						"url": {
+							"raw": "{{base_url}}/api/stores/77889900-AABB-4CC1-8DD2-334455667799",
+							"host": ["{{base_url}}"],
+							"path": ["api", "stores", "77889900-AABB-4CC1-8DD2-334455667799"]
+						},
+						"description": "Elimina una tienda por ID. Protegido: requiere admin. Retorna 204 No Content."
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Products",
 			"item": [
 				{

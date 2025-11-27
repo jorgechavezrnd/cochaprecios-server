@@ -1,0 +1,40 @@
+services:
+  Stores.domain.StoreRepository:
+    class: ../../../../modules/stores/infrastructure/persistence/typeOrmStoreRepository
+    arguments: ['@Shared.ConnectionManager']
+
+  Stores.application.StoreCreator:
+    class: ../../../../modules/stores/application/storeCreator
+    arguments: ['@Stores.domain.StoreRepository']
+
+  Stores.application.StoreUpdater:
+    class: ../../../../modules/stores/application/storeUpdater
+    arguments: ['@Stores.domain.StoreRepository']
+
+  Stores.application.StoreFinder:
+    class: ../../../../modules/stores/application/storeFinder
+    arguments: ['@Stores.domain.StoreRepository']
+
+  Stores.application.StoreSearcher:
+    class: ../../../../modules/stores/application/storeSearcher
+    arguments: ['@Stores.domain.StoreRepository']
+
+  Stores.application.StoreDeleter:
+    class: ../../../../modules/stores/application/storeDeleter
+    arguments: ['@Stores.domain.StoreRepository']
+
+  Controllers.stores.StorePutController:
+    class: ../../../../api/stores/storePutController
+    arguments: ['@Stores.application.StoreCreator', '@Stores.application.StoreUpdater', '@Stores.application.StoreFinder']
+
+  Controllers.stores.StoreGetController:
+    class: ../../../../api/stores/storeGetController
+    arguments: ['@Stores.application.StoreFinder']
+
+  Controllers.stores.StoreSearchController:
+    class: ../../../../api/stores/storeSearchController
+    arguments: ['@Stores.application.StoreSearcher']
+
+  Controllers.stores.StoreDeleteController:
+    class: ../../../../api/stores/storeDeleteController
+    arguments: ['@Stores.application.StoreDeleter']

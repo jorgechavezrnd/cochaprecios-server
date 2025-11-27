@@ -1,0 +1,33 @@
+services:
+  Products.domain.ProductRepository:
+    class: ../../../../modules/products/infrastructure/persistence/typeOrmProductRepository
+    arguments: ['@Shared.ConnectionManager']
+
+  Products.application.ProductCreator:
+    class: ../../../../modules/products/application/productCreator
+    arguments: ['@Products.domain.ProductRepository']
+
+  Products.application.ProductFinder:
+    class: ../../../../modules/products/application/productFinder
+    arguments: ['@Products.domain.ProductRepository']
+
+  Products.application.ProductUpdater:
+    class: ../../../../modules/products/application/productUpdater
+    arguments: ['@Products.domain.ProductRepository']
+
+  Products.application.ProductSearcher:
+    class: ../../../../modules/products/application/productSearcher
+    arguments: ['@Products.domain.ProductRepository']
+
+  Controllers.products.ProductPutController:
+    class: ../../../../api/products/productPutController
+    arguments: ['@Products.application.ProductCreator', '@Products.application.ProductUpdater', '@Products.application.ProductFinder']
+
+  Controllers.products.ProductGetController:
+    class: ../../../../api/products/productGetController
+    arguments: ['@Products.application.ProductFinder']
+
+  Controllers.products.ProductSearchController:
+    class: ../../../../api/products/productSearchController
+    arguments: ['@Products.application.ProductSearcher']
+

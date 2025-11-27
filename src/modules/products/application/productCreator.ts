@@ -1,0 +1,28 @@
+import { ProductRepository } from '../domain/productRepository';
+import { CreateProductRequest } from './createProductRequest';
+import { Product } from '../domain/product';
+import { ProductId } from '../domain/productId';
+import { ProductName } from '../domain/productName';
+import { ProductDescription } from '../domain/productDescription';
+import { ProductCategoryId } from '../domain/productCategoryId';
+import { ProductImageUrl } from '../domain/productImageUrl';
+
+export default class ProductCreator {
+  constructor(private readonly repository: ProductRepository) {}
+
+  async run(request: CreateProductRequest): Promise<void> {
+    const existing = await this.repository.findById(new ProductId(request.id));
+    const product = new Product(
+      new ProductId(request.id),
+      new ProductName(request.name),
+      new ProductDescription(request.description),
+      new ProductCategoryId(request.categoryId),
+      request.imageUrl ? new ProductImageUrl(request.imageUrl) : undefined,
+      existing?.createdAt,
+      new Date()
+    );
+
+    await this.repository.save(product);
+  }
+}
+

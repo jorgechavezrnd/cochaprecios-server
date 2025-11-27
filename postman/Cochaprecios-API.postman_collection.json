@@ -127,6 +127,84 @@
 			]
 		},
 		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" },
+							{ "key": "Authorization", "value": "Bearer {{token}}" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Arroz Premium\",\n  \"description\": \"Arroz de grano largo\",\n  \"categoryId\": \"A1B2C3D4-E5F6-47A8-9ABC-0DEF12345678\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/products/CAFEBABE-1234-4DEF-8A1B-23456789CDEF",
+							"host": ["{{base_url}}"],
+							"path": ["api", "products", "CAFEBABE-1234-4DEF-8A1B-23456789CDEF"]
+						},
+						"description": "Crea un nuevo producto. Protegido: requiere admin. Retorna 201 Created."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" },
+							{ "key": "Authorization", "value": "Bearer {{token}}" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Cepillo Dental Deluxe\",\n  \"description\": \"Cepillo de cerdas ultra suaves\",\n  \"categoryId\": \"C1D2E3F4-A5B6-4CD8-A123-89ABCDEF0123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/products/ABCDEF12-3456-4ABC-8DEF-0123456789AB",
+							"host": ["{{base_url}}"],
+							"path": ["api", "products", "ABCDEF12-3456-4ABC-8DEF-0123456789AB"]
+						},
+						"description": "Actualiza un producto existente. Protegido: requiere admin. Retorna 200 OK."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/DEADBEEF-0000-4ABC-8DEF-1234567890AB",
+							"host": ["{{base_url}}"],
+							"path": ["api", "products", "DEADBEEF-0000-4ABC-8DEF-1234567890AB"]
+						},
+						"description": "Obtiene un producto por ID. Retorna 200 OK o 404 si no existe."
+					},
+					"response": []
+				},
+				{
+					"name": "Search Products by Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products?name=Cepillo%20Dental",
+							"host": ["{{base_url}}"],
+							"path": ["api", "products"],
+							"query": [
+								{ "key": "name", "value": "Cepillo Dental" }
+							]
+						},
+						"description": "Busca productos por nombre. Retorna 200 OK con lista."
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Categories",
 			"item": [
                 {

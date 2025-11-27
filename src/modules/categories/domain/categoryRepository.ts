@@ -1,5 +1,5 @@
 import { Category } from './category';
-import { CategoryId } from './categoryId';
+import { CategoryId } from '../../shared/domain/categories/categoryId';
 import { CategoryName } from './categoryName';
 import { Nullable } from '../../shared/domain/nullable';
 

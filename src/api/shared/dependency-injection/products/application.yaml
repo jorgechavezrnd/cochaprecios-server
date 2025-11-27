@@ -18,16 +18,3 @@ services:
   Products.application.ProductSearcher:
     class: ../../../../modules/products/application/productSearcher
     arguments: ['@Products.domain.ProductRepository']
-
-  Controllers.products.ProductPutController:
-    class: ../../../../api/products/productPutController
-    arguments: ['@Products.application.ProductCreator', '@Products.application.ProductUpdater', '@Products.application.ProductFinder']
-
-  Controllers.products.ProductGetController:
-    class: ../../../../api/products/productGetController
-    arguments: ['@Products.application.ProductFinder']
-
-  Controllers.products.ProductSearchController:
-    class: ../../../../api/products/productSearchController
-    arguments: ['@Products.application.ProductSearcher']
-

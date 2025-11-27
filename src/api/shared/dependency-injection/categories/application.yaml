@@ -22,19 +22,3 @@ services:
   Categories.application.CategoryDeleter:
     class: ../../../../modules/categories/application/categoryDeleter
     arguments: ['@Categories.domain.CategoryRepository']
-
-  Controllers.categories.CategoryPutController:
-    class: ../../../../api/categories/categoryPutController
-    arguments: ['@Categories.application.CategoryCreator', '@Categories.application.CategoryUpdater', '@Categories.application.CategoryFinder']
-
-  Controllers.categories.CategoryGetController:
-    class: ../../../../api/categories/categoryGetController
-    arguments: ['@Categories.application.CategoryFinder']
-
-  Controllers.categories.CategoryGetAllController:
-    class: ../../../../api/categories/categoryGetAllController
-    arguments: ['@Categories.application.CategoryAllFinder']
-
-  Controllers.categories.CategoryDeleteController:
-    class: ../../../../api/categories/categoryDeleteController
-    arguments: ['@Categories.application.CategoryDeleter']

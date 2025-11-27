@@ -31,3 +31,15 @@ services:
   Controllers.categories.CategoryDeleteController:
     class: ../../../categories/categoryDeleteController
     arguments: ['@Categories.application.CategoryDeleter']
+
+  Controllers.products.ProductPutController:
+    class: ../../../../api/products/productPutController
+    arguments: ['@Products.application.ProductCreator', '@Products.application.ProductUpdater', '@Products.application.ProductFinder']
+
+  Controllers.products.ProductGetController:
+    class: ../../../../api/products/productGetController
+    arguments: ['@Products.application.ProductFinder']
+
+  Controllers.products.ProductSearchController:
+    class: ../../../../api/products/productSearchController
+    arguments: ['@Products.application.ProductSearcher']

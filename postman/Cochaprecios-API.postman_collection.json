@@ -6,6 +6,8 @@
 "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 },
 "variable": [
+  { "key": "base_url", "value": "http://localhost:3000" },
+  { "key": "token", "value": "" },
   { "key": "storeId", "value": "1122AABB-CCDD-4EE1-8FF2-334455667788" },
   { "key": "productId", "value": "11AA22BB-33CC-4DD4-8EE5-99AABBCCDDEE" },
   { "key": "priceId", "value": "22AA33BB-44CC-4DD4-8EE5-99AABBCCDDEE" }
@@ -842,17 +844,5 @@
 				}
 			]
 		}
-	],
-    "variable": [
-        {
-            "key": "base_url",
-            "value": "http://localhost:3000",
-            "type": "string"
-        },
-        {
-            "key": "token",
-            "value": "",
-            "type": "string"
-        }
-    ]
+	]
 }

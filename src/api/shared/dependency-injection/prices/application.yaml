@@ -1,0 +1,41 @@
+services:
+  Prices.domain.ProductPriceRepository:
+    class: ../../../../modules/prices/infrastructure/persistence/typeOrmProductPriceRepository
+    arguments: ['@Shared.ConnectionManager']
+
+  Prices.application.ProductPriceCreator:
+    class: ../../../../modules/prices/application/productPriceCreator
+    arguments: ['@Prices.domain.ProductPriceRepository']
+
+  Prices.application.ProductPriceUpdater:
+    class: ../../../../modules/prices/application/productPriceUpdater
+    arguments: ['@Prices.domain.ProductPriceRepository']
+
+  Prices.application.ProductPriceFinder:
+    class: ../../../../modules/prices/application/productPriceFinder
+    arguments: ['@Prices.domain.ProductPriceRepository']
+
+  Prices.application.ProductPriceSearcher:
+    class: ../../../../modules/prices/application/productPriceSearcher
+    arguments: ['@Prices.domain.ProductPriceRepository']
+
+  Prices.application.ProductPriceAggregator:
+    class: ../../../../modules/prices/application/productPriceAggregator
+    arguments: ['@Prices.domain.ProductPriceRepository']
+
+  Controllers.prices.PricePutController:
+    class: ../../../../api/prices/pricePutController
+    arguments: ['@Prices.application.ProductPriceCreator', '@Prices.application.ProductPriceUpdater', '@Prices.application.ProductPriceFinder']
+
+  Controllers.prices.PriceGetController:
+    class: ../../../../api/prices/priceGetController
+    arguments: ['@Prices.application.ProductPriceFinder']
+
+  Controllers.prices.PriceSearchController:
+    class: ../../../../api/prices/priceSearchController
+    arguments: ['@Prices.application.ProductPriceSearcher']
+
+  Controllers.prices.PriceAggregateController:
+    class: ../../../../api/prices/priceAggregateController
+    arguments: ['@Prices.application.ProductPriceAggregator']
+

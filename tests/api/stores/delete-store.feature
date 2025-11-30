@@ -27,7 +27,7 @@ Feature: Delete a Store
     Given I send a PUT request to "/api/stores/77889900-AABB-4CC1-8DD2-334455667799" with body:
     """
     {
-      "name": "Hipermaxi Norte",
+      "name": "Hipermaxi Norte Sucursal 2",
       "address": "Av. Secundaria #45",
       "phone": "+591-333-444-555"
     }

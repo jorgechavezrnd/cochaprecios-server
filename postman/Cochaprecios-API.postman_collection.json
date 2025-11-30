@@ -3,9 +3,14 @@
 		"_postman_id": "cochaprecios-api",
 		"name": "Cochaprecios API",
 		"description": "Collection for testing Users and Categories module endpoints",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
+"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+},
+"variable": [
+  { "key": "storeId", "value": "1122AABB-CCDD-4EE1-8FF2-334455667788" },
+  { "key": "productId", "value": "11AA22BB-33CC-4DD4-8EE5-99AABBCCDDEE" },
+  { "key": "priceId", "value": "22AA33BB-44CC-4DD4-8EE5-99AABBCCDDEE" }
+],
+"item": [
 		{
 			"name": "Users",
 			"item": [
@@ -130,7 +135,7 @@
 			"name": "Stores",
 			"item": [
 				{
-					"name": "Create Store",
+                    "name": "Create Store",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -141,11 +146,11 @@
                             "mode": "raw",
                             "raw": "{\n  \"name\": \"Supermercado Central\",\n  \"address\": \"Av. Principal #123\",\n  \"phone\": \"+591-444-555-666\"\n}"
                         },
-						"url": {
-							"raw": "{{base_url}}/api/stores/44556677-8899-4AA0-8BB1-223344556677",
-							"host": ["{{base_url}}"],
-							"path": ["api", "stores", "44556677-8899-4AA0-8BB1-223344556677"]
-						},
+                        "url": {
+                            "raw": "{{base_url}}/api/stores/{{storeId}}",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "stores", "{{storeId}}"]
+                        },
 						"description": "Crea una tienda. Protegido: requiere admin. Retorna 201 Created."
 					},
 					"response": []
@@ -162,25 +167,25 @@
                             "mode": "raw",
                             "raw": "{\n  \"name\": \"Supermercado Central 2\",\n  \"address\": \"Av. Principal #124\",\n  \"phone\": \"+591-777-888-999\"\n}"
                         },
-						"url": {
-							"raw": "{{base_url}}/api/stores/1122AABB-CCDD-4EE1-8FF2-334455667788",
-							"host": ["{{base_url}}"],
-							"path": ["api", "stores", "1122AABB-CCDD-4EE1-8FF2-334455667788"]
-						},
+					"url": {
+						"raw": "{{base_url}}/api/stores/{{storeId}}",
+						"host": ["{{base_url}}"],
+						"path": ["api", "stores", "{{storeId}}"]
+					},
 						"description": "Actualiza una tienda existente. Protegido: requiere admin. Retorna 200 OK."
 					},
 					"response": []
 				},
 				{
-					"name": "Get Store by ID",
+                    "name": "Get Store by ID",
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{base_url}}/api/stores/44556677-8899-4AA0-8BB1-223344556677",
-							"host": ["{{base_url}}"],
-							"path": ["api", "stores", "44556677-8899-4AA0-8BB1-223344556677"]
-						},
+                        "url": {
+                            "raw": "{{base_url}}/api/stores/{{storeId}}",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "stores", "{{storeId}}"]
+                        },
 						"description": "Obtiene una tienda por ID. Retorna 200 OK."
 					},
 					"response": []
@@ -203,17 +208,17 @@
 					"response": []
 				},
 				{
-					"name": "Delete Store",
+                    "name": "Delete Store",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{ "key": "Authorization", "value": "Bearer {{token}}" }
 						],
-						"url": {
-							"raw": "{{base_url}}/api/stores/77889900-AABB-4CC1-8DD2-334455667799",
-							"host": ["{{base_url}}"],
-							"path": ["api", "stores", "77889900-AABB-4CC1-8DD2-334455667799"]
-						},
+					"url": {
+						"raw": "{{base_url}}/api/stores/{{storeId}}",
+						"host": ["{{base_url}}"],
+						"path": ["api", "stores", "{{storeId}}"]
+					},
 						"description": "Elimina una tienda por ID. Protegido: requiere admin. Retorna 204 No Content."
 					},
 					"response": []
@@ -236,9 +241,9 @@
 							"raw": "{\n  \"name\": \"Arroz Premium\",\n  \"description\": \"Arroz de grano largo\",\n  \"categoryId\": \"A1B2C3D4-E5F6-47A8-9ABC-0DEF12345678\"\n}"
 						},
 						"url": {
-							"raw": "{{base_url}}/api/products/CAFEBABE-1234-4DEF-8A1B-23456789CDEF",
+							"raw": "{{base_url}}/api/products/{{productId}}",
 							"host": ["{{base_url}}"],
-							"path": ["api", "products", "CAFEBABE-1234-4DEF-8A1B-23456789CDEF"]
+							"path": ["api", "products", "{{productId}}"]
 						},
 						"description": "Crea un nuevo producto. Protegido: requiere admin. Retorna 201 Created."
 					},
@@ -257,9 +262,9 @@
 							"raw": "{\n  \"name\": \"Cepillo Dental Deluxe\",\n  \"description\": \"Cepillo de cerdas ultra suaves\",\n  \"categoryId\": \"C1D2E3F4-A5B6-4CD8-A123-89ABCDEF0123\"\n}"
 						},
 						"url": {
-							"raw": "{{base_url}}/api/products/ABCDEF12-3456-4ABC-8DEF-0123456789AB",
+							"raw": "{{base_url}}/api/products/{{productId}}",
 							"host": ["{{base_url}}"],
-							"path": ["api", "products", "ABCDEF12-3456-4ABC-8DEF-0123456789AB"]
+							"path": ["api", "products", "{{productId}}"]
 						},
 						"description": "Actualiza un producto existente. Protegido: requiere admin. Retorna 200 OK."
 					},
@@ -271,9 +276,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/products/DEADBEEF-0000-4ABC-8DEF-1234567890AB",
+							"raw": "{{base_url}}/api/products/{{productId}}",
 							"host": ["{{base_url}}"],
-							"path": ["api", "products", "DEADBEEF-0000-4ABC-8DEF-1234567890AB"]
+							"path": ["api", "products", "{{productId}}"]
 						},
 						"description": "Obtiene un producto por ID. Retorna 200 OK o 404 si no existe."
 					},
@@ -296,6 +301,106 @@
 					},
 					"response": []
 				}
+			]
+		},
+		{
+			"name": "Prices",
+			"item": [
+				{
+					"name": "Create Price",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" },
+							{ "key": "Authorization", "value": "Bearer {{token}}" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productId\": \"{{productId}}\",\n  \"storeId\": \"{{storeId}}\",\n  \"price\": 12.50,\n  \"currency\": \"BOB\",\n  \"collectedAt\": \"2024-08-01T00:00:00.000Z\",\n  \"source\": \"manual\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/prices/{{priceId}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "prices", "{{priceId}}"]
+						},
+						"description": "Crea un nuevo precio. Protegido: requiere admin. Retorna 201 Created."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Price",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" },
+							{ "key": "Authorization", "value": "Bearer {{token}}" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productId\": \"{{productId}}\",\n  \"storeId\": \"{{storeId}}\",\n  \"price\": 11.25,\n  \"currency\": \"BOB\",\n  \"collectedAt\": \"2024-08-02T00:00:00.000Z\",\n  \"source\": \"app\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/prices/{{priceId}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "prices", "{{priceId}}"]
+						},
+						"description": "Actualiza un precio existente. Protegido: requiere admin. Retorna 200 OK."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Price by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/prices/{{priceId}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "prices", "{{priceId}}"]
+						},
+						"description": "Obtiene un precio por ID. Retorna 200 OK o 404 si no existe."
+					},
+					"response": []
+				},
+                {
+                    "name": "Search Prices",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+						"url": {
+							"raw": "{{base_url}}/api/prices?productId={{productId}}&from=2024-08-01T00:00:00.000Z&to=2024-08-31T00:00:00.000Z",
+							"host": ["{{base_url}}"],
+							"path": ["api", "prices"],
+							"query": [
+								{ "key": "productId", "value": "{{productId}}" },
+								{ "key": "from", "value": "2024-08-01T00:00:00.000Z" },
+								{ "key": "to", "value": "2024-08-31T00:00:00.000Z" }
+							]
+						},
+                        "description": "Busca precios por producto y rango. Retorna 200 OK."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Aggregate Prices",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+						"url": {
+							"raw": "{{base_url}}/api/prices/aggregate?productId={{productId}}&metric=avg&from=2024-08-01T00:00:00.000Z&to=2024-08-31T00:00:00.000Z",
+							"host": ["{{base_url}}"],
+							"path": ["api", "prices", "aggregate"],
+							"query": [
+								{ "key": "productId", "value": "{{productId}}" },
+								{ "key": "metric", "value": "avg" },
+								{ "key": "from", "value": "2024-08-01T00:00:00.000Z" },
+								{ "key": "to", "value": "2024-08-31T00:00:00.000Z" }
+							]
+						},
+                        "description": "Agrega precios (min/max/avg) por producto y rango. Retorna 200 OK."
+                    },
+                    "response": []
+                }
 			]
 		},
 		{

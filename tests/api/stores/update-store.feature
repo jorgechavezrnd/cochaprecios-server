@@ -27,7 +27,7 @@ Feature: Update a Store
     Given I send a PUT request to "/api/stores/1122AABB-CCDD-4EE1-8FF2-334455667788" with body:
     """
     {
-      "name": "Hipermaxi Centro",
+      "name": "Hipermaxi Centro X",
       "address": "Av. Principal #123",
       "phone": "+591-444-555-666"
     }
@@ -37,7 +37,7 @@ Feature: Update a Store
     Given I send a PUT request to "/api/stores/1122AABB-CCDD-4EE1-8FF2-334455667788" with body:
     """
     {
-      "name": "Hipermaxi Centro 2",
+      "name": "Hipermaxi Centro X2",
       "address": "Av. Principal #124",
       "phone": "+591-777-888-999"
     }

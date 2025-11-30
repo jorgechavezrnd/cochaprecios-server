@@ -5,3 +5,4 @@ imports:
   - { resource: ./categories/application.yaml }
   - { resource: ./products/application.yaml }
   - { resource: ./stores/application.yaml }
+  - { resource: ./prices/application.yaml }

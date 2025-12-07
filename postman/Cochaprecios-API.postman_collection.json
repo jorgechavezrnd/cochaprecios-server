@@ -134,6 +134,50 @@
 			]
 		},
 		{
+			"name": "Likes",
+			"item": [
+				{
+					"name": "Create Like",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" },
+							{ "key": "Authorization", "value": "Bearer {{token}}" }
+						],
+						"body": { "mode": "raw", "raw": "{\n  \"productId\": \"{{productId}}\",\n  \"storeId\": \"{{storeId}}\"\n}" },
+						"url": { "raw": "{{base_url}}/api/likes/77BB88CC-11DD-4EEE-9FFF-001122334455", "host": ["{{base_url}}"], "path": ["api", "likes", "77BB88CC-11DD-4EEE-9FFF-001122334455"] }
+					},
+					"response": []
+				},
+				{
+					"name": "Count Likes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/likes/count?productId={{productId}}&storeId={{storeId}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "likes", "count"],
+							"query": [
+								{ "key": "productId", "value": "{{productId}}" },
+								{ "key": "storeId", "value": "{{storeId}}" }
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Like",
+					"request": {
+						"method": "DELETE",
+						"header": [ { "key": "Authorization", "value": "Bearer {{token}}" } ],
+						"url": { "raw": "{{base_url}}/api/likes/77BB88CC-11DD-4EEE-9FFF-001122334455", "host": ["{{base_url}}"], "path": ["api", "likes", "77BB88CC-11DD-4EEE-9FFF-001122334455"] }
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Stores",
 			"item": [
 				{

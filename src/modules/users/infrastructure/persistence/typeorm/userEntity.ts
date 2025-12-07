@@ -7,6 +7,8 @@ import { UserUsername } from '../../../domain/userUsername';
 import { UserEmail } from '../../../domain/userEmail';
 import { UserPassword } from '../../../domain/userPassword';
 import { UserRole, UserRoleEnum } from '../../../domain/userRole';
+import { UserCreatedAt } from '../../../domain/userCreatedAt';
+import { UserUpdatedAt } from '../../../domain/userUpdatedAt';
 
 export const UserEntity = new EntitySchema<User>({
   name: 'User',
@@ -45,11 +47,13 @@ export const UserEntity = new EntitySchema<User>({
       type: 'timestamp',
       createDate: true,
       name: 'created_at',
+      transformer: ValueObjectTransformer(UserCreatedAt),
     },
     updatedAt: {
       type: 'timestamp',
       updateDate: true,
       name: 'updated_at',
+      transformer: ValueObjectTransformer(UserUpdatedAt),
     }
   }
 });

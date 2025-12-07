@@ -8,9 +8,12 @@ import { ProductId } from '../../../../src/modules/products/domain/productId';
 import { StoreId } from '../../../../src/modules/stores/domain/storeId';
 import { UuidMother } from '../../shared/domain/uuidMother';
 
+import { PriceCreatedAt } from '../../../../src/modules/prices/domain/priceCreatedAt';
+import { PriceUpdatedAt } from '../../../../src/modules/prices/domain/priceUpdatedAt';
+
 export class ProductPriceMother {
-  static create(id: PriceId, productId: ProductId, storeId: StoreId, amount: PriceAmount, currency: PriceCurrency, collectedAt: PriceCollectedAt, source: PriceSource): ProductPrice {
-    return new ProductPrice(id, productId, storeId, amount, currency, collectedAt, source);
+  static create(id: PriceId, productId: ProductId, storeId: StoreId, amount: PriceAmount, currency: PriceCurrency, collectedAt: PriceCollectedAt, source: PriceSource, createdAt?: PriceCreatedAt, updatedAt?: PriceUpdatedAt): ProductPrice {
+    return new ProductPrice(id, productId, storeId, amount, currency, collectedAt, source, createdAt, updatedAt);
   }
 
   static random(): ProductPrice {
@@ -21,7 +24,9 @@ export class ProductPriceMother {
       new PriceAmount(12.5),
       new PriceCurrency('BOB'),
       new PriceCollectedAt(new Date('2024-08-01T00:00:00Z')),
-      new PriceSource('manual')
+      new PriceSource('manual'),
+      new PriceCreatedAt(new Date()),
+      new PriceUpdatedAt(new Date())
     );
   }
 }

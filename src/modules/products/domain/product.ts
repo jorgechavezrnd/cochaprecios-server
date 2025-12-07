@@ -4,6 +4,8 @@ import { ProductName } from './productName';
 import { ProductDescription } from './productDescription';
 import { CategoryId } from '../../shared/domain/categories/categoryId';
 import { ProductImageUrl } from './productImageUrl';
+import { ProductCreatedAt } from './productCreatedAt';
+import { ProductUpdatedAt } from './productUpdatedAt';
 
 export class Product extends AggregateRoot {
   readonly id: ProductId;
@@ -11,8 +13,8 @@ export class Product extends AggregateRoot {
   description: ProductDescription;
   categoryId: CategoryId;
   imageUrl?: ProductImageUrl;
-  readonly createdAt?: Date;
-  updatedAt?: Date;
+  readonly createdAt?: ProductCreatedAt;
+  updatedAt?: ProductUpdatedAt;
 
   constructor(
     id: ProductId,
@@ -20,8 +22,8 @@ export class Product extends AggregateRoot {
     description: ProductDescription,
     categoryId: CategoryId,
     imageUrl?: ProductImageUrl,
-    createdAt?: Date,
-    updatedAt?: Date
+    createdAt?: ProductCreatedAt,
+    updatedAt?: ProductUpdatedAt
   ) {
     super();
     this.id = id;
@@ -48,8 +50,8 @@ export class Product extends AggregateRoot {
       new ProductDescription(plain.description),
       new CategoryId(plain.categoryId),
       plain.imageUrl ? new ProductImageUrl(plain.imageUrl) : undefined,
-      plain.createdAt,
-      plain.updatedAt
+      plain.createdAt ? new ProductCreatedAt(plain.createdAt) : undefined,
+      plain.updatedAt ? new ProductUpdatedAt(plain.updatedAt) : undefined
     );
   }
 
@@ -60,8 +62,8 @@ export class Product extends AggregateRoot {
       description: this.description.value,
       categoryId: this.categoryId.value,
       imageUrl: this.imageUrl?.value,
-      createdAt: this.createdAt,
-      updatedAt: this.updatedAt,
+      createdAt: this.createdAt?.value,
+      updatedAt: this.updatedAt?.value,
     };
   }
 }

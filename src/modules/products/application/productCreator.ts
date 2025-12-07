@@ -6,9 +6,10 @@ import { ProductName } from '../domain/productName';
 import { ProductDescription } from '../domain/productDescription';
 import { CategoryId } from '../../shared/domain/categories/categoryId';
 import { ProductImageUrl } from '../domain/productImageUrl';
+import { ProductUpdatedAt } from '../domain/productUpdatedAt';
 
 export default class ProductCreator {
-  constructor(private readonly repository: ProductRepository) {}
+  constructor(private readonly repository: ProductRepository) { }
 
   async run(request: CreateProductRequest): Promise<void> {
     const existing = await this.repository.findById(new ProductId(request.id));
@@ -19,7 +20,7 @@ export default class ProductCreator {
       new CategoryId(request.categoryId),
       request.imageUrl ? new ProductImageUrl(request.imageUrl) : undefined,
       existing?.createdAt,
-      new Date()
+      new ProductUpdatedAt(new Date())
     );
 
     await this.repository.save(product);

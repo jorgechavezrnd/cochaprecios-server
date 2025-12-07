@@ -4,6 +4,7 @@ import { ProductName } from '../domain/productName';
 import { ProductDescription } from '../domain/productDescription';
 import { CategoryId } from '../../shared/domain/categories/categoryId';
 import { ProductImageUrl } from '../domain/productImageUrl';
+import { ProductUpdatedAt } from '../domain/productUpdatedAt';
 
 export interface UpdateProductRequest {
   id: string;
@@ -14,7 +15,7 @@ export interface UpdateProductRequest {
 }
 
 export default class ProductUpdater {
-  constructor(private readonly repository: ProductRepository) {}
+  constructor(private readonly repository: ProductRepository) { }
 
   async run(request: UpdateProductRequest): Promise<void> {
     const product = await this.repository.findById(new ProductId(request.id));
@@ -31,7 +32,7 @@ export default class ProductUpdater {
     product.description = new ProductDescription(request.description);
     product.categoryId = new CategoryId(request.categoryId);
     product.imageUrl = request.imageUrl ? new ProductImageUrl(request.imageUrl) : undefined;
-    product.updatedAt = new Date();
+    product.updatedAt = new ProductUpdatedAt(new Date());
 
     await this.repository.save(product);
   }

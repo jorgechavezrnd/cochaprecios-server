@@ -47,3 +47,16 @@ export function requireAdmin(req: Request, res: Response, next: NextFunction) {
   next();
 }
 
+export function requireViewer(req: Request, res: Response, next: NextFunction) {
+  const user = (req as any).user;
+  if (!user) {
+    res.status(httpStatus.UNAUTHORIZED).json({ message: 'Unauthorized' });
+    return;
+  }
+  if (user.role.value !== 'viewer') {
+    res.status(httpStatus.FORBIDDEN).json({ message: 'Forbidden: viewer required' });
+    return;
+  }
+  next();
+}
+

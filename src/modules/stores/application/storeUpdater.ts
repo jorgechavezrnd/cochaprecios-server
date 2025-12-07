@@ -3,6 +3,7 @@ import { StoreId } from '../domain/storeId';
 import { StoreName } from '../domain/storeName';
 import { StoreAddress } from '../domain/storeAddress';
 import { StorePhone } from '../domain/storePhone';
+import { StoreUpdatedAt } from '../domain/storeUpdatedAt';
 
 export interface UpdateStoreRequest {
   id: string;
@@ -12,7 +13,7 @@ export interface UpdateStoreRequest {
 }
 
 export default class StoreUpdater {
-  constructor(private readonly repository: StoreRepository) {}
+  constructor(private readonly repository: StoreRepository) { }
 
   async run(request: UpdateStoreRequest): Promise<void> {
     const existing = await this.repository.findById(new StoreId(request.id));
@@ -26,7 +27,7 @@ export default class StoreUpdater {
     existing.name = new StoreName(request.name);
     existing.address = new StoreAddress(request.address);
     existing.phone = new StorePhone(request.phone);
-    existing.updatedAt = new Date();
+    existing.updatedAt = new StoreUpdatedAt(new Date());
 
     await this.repository.save(existing);
   }

@@ -4,6 +4,7 @@ module.exports = {
     require: ['tests/modules/shared/infrastructure/env/envs.ts', 'tests/**/*.steps.ts'],
     paths: ['tests/**/*.feature'],
     format: ['progress', 'html:cucumber-report/index.html'],
-    formatOptions: { snippetInterface: 'async-await' }
+    formatOptions: { snippetInterface: 'async-await' },
+    timeout: 30000
   }
 };

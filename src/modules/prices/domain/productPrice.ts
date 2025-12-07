@@ -6,6 +6,8 @@ import { PriceCollectedAt } from './priceCollectedAt';
 import { PriceSource } from './priceSource';
 import { ProductId } from '../../products/domain/productId';
 import { StoreId } from '../../stores/domain/storeId';
+import { PriceCreatedAt } from './priceCreatedAt';
+import { PriceUpdatedAt } from './priceUpdatedAt';
 
 export class ProductPrice extends AggregateRoot {
   readonly id: PriceId;
@@ -15,8 +17,8 @@ export class ProductPrice extends AggregateRoot {
   currency: PriceCurrency;
   collectedAt: PriceCollectedAt;
   source: PriceSource;
-  readonly createdAt?: Date;
-  updatedAt?: Date;
+  readonly createdAt?: PriceCreatedAt;
+  updatedAt?: PriceUpdatedAt;
 
   constructor(
     id: PriceId,
@@ -26,8 +28,8 @@ export class ProductPrice extends AggregateRoot {
     currency: PriceCurrency,
     collectedAt: PriceCollectedAt,
     source: PriceSource,
-    createdAt?: Date,
-    updatedAt?: Date
+    createdAt?: PriceCreatedAt,
+    updatedAt?: PriceUpdatedAt
   ) {
     super();
     this.id = id;
@@ -41,7 +43,17 @@ export class ProductPrice extends AggregateRoot {
     this.updatedAt = updatedAt;
   }
 
-  static fromPrimitives(plain: { id: string; productId: string; storeId: string; price: number; currency: string; collectedAt: Date; source: string; createdAt?: Date; updatedAt?: Date }): ProductPrice {
+  static fromPrimitives(plain: {
+    id: string;
+    productId: string;
+    storeId: string;
+    price: number;
+    currency: string;
+    collectedAt: Date;
+    source: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+  }): ProductPrice {
     return new ProductPrice(
       new PriceId(plain.id),
       new ProductId(plain.productId),
@@ -50,8 +62,8 @@ export class ProductPrice extends AggregateRoot {
       new PriceCurrency(plain.currency),
       new PriceCollectedAt(plain.collectedAt),
       new PriceSource(plain.source),
-      plain.createdAt,
-      plain.updatedAt
+      plain.createdAt ? new PriceCreatedAt(plain.createdAt) : undefined,
+      plain.updatedAt ? new PriceUpdatedAt(plain.updatedAt) : undefined
     );
   }
 
@@ -64,8 +76,8 @@ export class ProductPrice extends AggregateRoot {
       currency: this.currency.value,
       collectedAt: this.collectedAt.value,
       source: this.source.value,
-      createdAt: this.createdAt,
-      updatedAt: this.updatedAt,
+      createdAt: this.createdAt?.value,
+      updatedAt: this.updatedAt?.value,
     };
   }
 }

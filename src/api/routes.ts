@@ -5,6 +5,7 @@ import { CategoryRoutes } from './categories/categoryRoutes';
 import { ProductRoutes } from './products/productRoutes';
 import { StoreRoutes } from './stores/storeRoutes';
 import { PriceRoutes } from './prices/priceRoutes';
+import { LikeRoutes } from './likes/likeRoutes';
 
 export class AppRoutes {
 
@@ -18,6 +19,7 @@ export class AppRoutes {
     router.use('/api/products', ProductRoutes.routes);
     router.use('/api/stores', StoreRoutes.routes);
     router.use('/api/prices', PriceRoutes.routes);
+    router.use('/api/likes', LikeRoutes.routes);
 
     return router;
 

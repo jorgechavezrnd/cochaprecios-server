@@ -6,6 +6,7 @@ import { PriceAmount } from '../domain/priceAmount';
 import { PriceCurrency } from '../domain/priceCurrency';
 import { PriceCollectedAt } from '../domain/priceCollectedAt';
 import { PriceSource } from '../domain/priceSource';
+import { PriceUpdatedAt } from '../domain/priceUpdatedAt';
 
 export interface UpdatePriceRequest {
   id: string;
@@ -18,7 +19,7 @@ export interface UpdatePriceRequest {
 }
 
 export default class ProductPriceUpdater {
-  constructor(private readonly repository: ProductPriceRepository) {}
+  constructor(private readonly repository: ProductPriceRepository) { }
 
   async run(request: UpdatePriceRequest): Promise<void> {
     const existing = await this.repository.findById(new PriceId(request.id));
@@ -30,7 +31,7 @@ export default class ProductPriceUpdater {
     existing.currency = new PriceCurrency(request.currency);
     existing.collectedAt = new PriceCollectedAt(new Date(request.collectedAt));
     existing.source = new PriceSource(request.source);
-    existing.updatedAt = new Date();
+    existing.updatedAt = new PriceUpdatedAt(new Date());
     await this.repository.save(existing);
   }
 }

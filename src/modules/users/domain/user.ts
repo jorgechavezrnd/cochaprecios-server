@@ -5,6 +5,8 @@ import { UserUsername } from './userUsername';
 import { UserEmail } from './userEmail';
 import { UserPassword } from './userPassword';
 import { UserRole } from './userRole';
+import { UserCreatedAt } from './userCreatedAt';
+import { UserUpdatedAt } from './userUpdatedAt';
 
 export class User extends AggregateRoot {
   readonly id: UserId;
@@ -13,8 +15,8 @@ export class User extends AggregateRoot {
   readonly email: UserEmail;
   readonly password: UserPassword;
   readonly role: UserRole;
-  readonly createdAt?: Date;
-  readonly updatedAt?: Date;
+  readonly createdAt?: UserCreatedAt;
+  readonly updatedAt?: UserUpdatedAt;
 
   constructor(
     id: UserId,
@@ -23,8 +25,8 @@ export class User extends AggregateRoot {
     email: UserEmail,
     password: UserPassword,
     role: UserRole,
-    createdAt?: Date,
-    updatedAt?: Date
+    createdAt?: UserCreatedAt,
+    updatedAt?: UserUpdatedAt
   ) {
     super();
     this.id = id;
@@ -54,8 +56,8 @@ export class User extends AggregateRoot {
       new UserEmail(plainData.email),
       UserPassword.fromHash(plainData.password),
       new UserRole(plainData.role as any),
-      plainData.createdAt,
-      plainData.updatedAt
+      plainData.createdAt ? new UserCreatedAt(plainData.createdAt) : undefined,
+      plainData.updatedAt ? new UserUpdatedAt(plainData.updatedAt) : undefined
     );
   }
 
@@ -67,8 +69,8 @@ export class User extends AggregateRoot {
       email: this.email.value,
       password: this.password.value,
       role: this.role.value,
-      createdAt: this.createdAt,
-      updatedAt: this.updatedAt,
+      createdAt: this.createdAt?.value,
+      updatedAt: this.updatedAt?.value,
     };
   }
 }

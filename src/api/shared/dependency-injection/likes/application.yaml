@@ -1,0 +1,29 @@
+services:
+  Likes.domain.LikeRepository:
+    class: ../../../../modules/likes/infrastructure/persistence/typeOrmLikeRepository
+    arguments: ['@Shared.ConnectionManager']
+
+  Likes.application.LikeCreator:
+    class: ../../../../modules/likes/application/likeCreator
+    arguments: ['@Likes.domain.LikeRepository']
+
+  Likes.application.LikeDeleter:
+    class: ../../../../modules/likes/application/likeDeleter
+    arguments: ['@Likes.domain.LikeRepository']
+
+  Likes.application.LikeCounter:
+    class: ../../../../modules/likes/application/likeCounter
+    arguments: ['@Likes.domain.LikeRepository']
+
+  Controllers.likes.LikePutController:
+    class: ../../../../api/likes/likePutController
+    arguments: ['@Likes.application.LikeCreator']
+
+  Controllers.likes.LikeDeleteController:
+    class: ../../../../api/likes/likeDeleteController
+    arguments: ['@Likes.application.LikeDeleter']
+
+  Controllers.likes.LikeCountController:
+    class: ../../../../api/likes/likeCountController
+    arguments: ['@Likes.application.LikeCounter']
+

@@ -8,6 +8,8 @@ import { PriceAmount } from '../../../domain/priceAmount';
 import { PriceCurrency } from '../../../domain/priceCurrency';
 import { PriceCollectedAt } from '../../../domain/priceCollectedAt';
 import { PriceSource } from '../../../domain/priceSource';
+import { PriceCreatedAt } from '../../../domain/priceCreatedAt';
+import { PriceUpdatedAt } from '../../../domain/priceUpdatedAt';
 
 export const ProductPriceEntity = new EntitySchema<ProductPrice>({
   name: 'ProductPrice',
@@ -21,7 +23,7 @@ export const ProductPriceEntity = new EntitySchema<ProductPrice>({
     currency: { type: String, transformer: ValueObjectTransformer(PriceCurrency) },
     collectedAt: { type: Date, name: 'collected_at', transformer: ValueObjectTransformer(PriceCollectedAt) },
     source: { type: String, transformer: ValueObjectTransformer(PriceSource) },
-    createdAt: { type: Date, name: 'created_at', createDate: true },
-    updatedAt: { type: Date, name: 'updated_at', updateDate: true },
+    createdAt: { type: 'timestamp', createDate: true, name: 'created_at', transformer: ValueObjectTransformer(PriceCreatedAt) },
+    updatedAt: { type: 'timestamp', updateDate: true, name: 'updated_at', transformer: ValueObjectTransformer(PriceUpdatedAt) },
   },
 });

@@ -13,6 +13,9 @@ import { UserEmailMother } from './userEmailMother';
 import { UserPasswordMother } from './userPasswordMother';
 import { UserRoleMother } from './userRoleMother';
 
+import { UserCreatedAt } from '../../../../src/modules/users/domain/userCreatedAt';
+import { UserUpdatedAt } from '../../../../src/modules/users/domain/userUpdatedAt';
+
 export class UserMother {
   static create(
     id: UserId,
@@ -21,8 +24,10 @@ export class UserMother {
     email: UserEmail,
     password: UserPassword,
     role: UserRole,
+    createdAt?: UserCreatedAt,
+    updatedAt?: UserUpdatedAt,
   ): User {
-    return new User(id, name, username, email, password, role);
+    return new User(id, name, username, email, password, role, createdAt, updatedAt);
   }
 
   static fromRequest(request: CreateUserRequest): User {
@@ -44,6 +49,8 @@ export class UserMother {
       UserEmailMother.random(),
       UserPasswordMother.random(),
       UserRoleMother.random(),
+      new UserCreatedAt(new Date()),
+      new UserUpdatedAt(new Date()),
     );
   }
 }

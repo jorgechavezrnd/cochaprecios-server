@@ -3,22 +3,24 @@ import { StoreId } from './storeId';
 import { StoreName } from './storeName';
 import { StoreAddress } from './storeAddress';
 import { StorePhone } from './storePhone';
+import { StoreCreatedAt } from './storeCreatedAt';
+import { StoreUpdatedAt } from './storeUpdatedAt';
 
 export class Store extends AggregateRoot {
   readonly id: StoreId;
   name: StoreName;
   address: StoreAddress;
   phone: StorePhone;
-  readonly createdAt?: Date;
-  updatedAt?: Date;
+  readonly createdAt?: StoreCreatedAt;
+  updatedAt?: StoreUpdatedAt;
 
   constructor(
     id: StoreId,
     name: StoreName,
     address: StoreAddress,
     phone: StorePhone,
-    createdAt?: Date,
-    updatedAt?: Date
+    createdAt?: StoreCreatedAt,
+    updatedAt?: StoreUpdatedAt
   ) {
     super();
     this.id = id;
@@ -35,8 +37,8 @@ export class Store extends AggregateRoot {
       new StoreName(plain.name),
       new StoreAddress(plain.address),
       new StorePhone(plain.phone),
-      plain.createdAt,
-      plain.updatedAt
+      plain.createdAt ? new StoreCreatedAt(plain.createdAt) : undefined,
+      plain.updatedAt ? new StoreUpdatedAt(plain.updatedAt) : undefined
     );
   }
 
@@ -46,8 +48,8 @@ export class Store extends AggregateRoot {
       name: this.name.value,
       address: this.address.value,
       phone: this.phone.value,
-      createdAt: this.createdAt,
-      updatedAt: this.updatedAt,
+      createdAt: this.createdAt?.value,
+      updatedAt: this.updatedAt?.value,
     };
   }
 }

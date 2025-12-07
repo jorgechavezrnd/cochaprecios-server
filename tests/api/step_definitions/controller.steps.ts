@@ -1,11 +1,14 @@
 import assert from 'assert';
-import { AfterAll, BeforeAll, Given, Then } from '@cucumber/cucumber';
+import { AfterAll, BeforeAll, Given, Then, setDefaultTimeout } from '@cucumber/cucumber';
 import request, { Response } from 'supertest';
 
 import { getTestServer } from '../testServer';
 import { getContainer } from '../../../src/api/shared/dependency-injection/container';
 import { Server } from '../../../src/api/server';
 import { EnvironmentArranger } from '../../modules/shared/infrastructure/arranger/environmentArranger';
+
+// Set default timeout for all steps and hooks to 30 seconds
+setDefaultTimeout(30000);
 
 let _request: request.Test;
 let testServer: Server;
@@ -48,7 +51,7 @@ Then('the response should be empty', () => {
 Then('the response should contain:', (body: string) => {
   const expectedBody = JSON.parse(body);
   const actualBody = _response.body;
-  
+
   Object.keys(expectedBody).forEach(key => {
     assert.strictEqual(actualBody[key], expectedBody[key], `Expected ${key} to be ${expectedBody[key]} but got ${actualBody[key]}`);
   });

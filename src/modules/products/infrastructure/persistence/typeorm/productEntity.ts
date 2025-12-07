@@ -6,6 +6,8 @@ import { ProductName } from '../../../domain/productName';
 import { ProductDescription } from '../../../domain/productDescription';
 import { CategoryId } from '../../../../shared/domain/categories/categoryId';
 import { ProductImageUrl } from '../../../domain/productImageUrl';
+import { ProductCreatedAt } from '../../../domain/productCreatedAt';
+import { ProductUpdatedAt } from '../../../domain/productUpdatedAt';
 
 export const ProductEntity = new EntitySchema<Product>({
   name: 'Product',
@@ -17,7 +19,7 @@ export const ProductEntity = new EntitySchema<Product>({
     description: { type: String, transformer: ValueObjectTransformer(ProductDescription) },
     categoryId: { type: String, name: 'category_id', transformer: ValueObjectTransformer(CategoryId) },
     imageUrl: { type: String, nullable: true, name: 'image_url', transformer: ValueObjectTransformer(ProductImageUrl) },
-    createdAt: { type: 'timestamp', createDate: true, name: 'created_at' },
-    updatedAt: { type: 'timestamp', updateDate: true, name: 'updated_at' },
+    createdAt: { type: 'timestamp', createDate: true, name: 'created_at', transformer: ValueObjectTransformer(ProductCreatedAt) },
+    updatedAt: { type: 'timestamp', updateDate: true, name: 'updated_at', transformer: ValueObjectTransformer(ProductUpdatedAt) },
   }
 });

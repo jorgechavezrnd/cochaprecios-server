@@ -1,0 +1,28 @@
+services:
+  Comments.domain.CommentRepository:
+    class: ../../../../modules/comments/infrastructure/persistence/typeOrmCommentRepository
+    arguments: ['@Shared.ConnectionManager']
+
+  Comments.application.CommentCreator:
+    class: ../../../../modules/comments/application/commentCreator
+    arguments: ['@Comments.domain.CommentRepository']
+
+  Comments.application.CommentDeleter:
+    class: ../../../../modules/comments/application/commentDeleter
+    arguments: ['@Comments.domain.CommentRepository']
+
+  Comments.application.CommentFinder:
+    class: ../../../../modules/comments/application/commentFinder
+    arguments: ['@Comments.domain.CommentRepository']
+
+  Controllers.comments.CommentPutController:
+    class: ../../../../api/comments/commentPutController
+    arguments: ['@Comments.application.CommentCreator']
+
+  Controllers.comments.CommentDeleteController:
+    class: ../../../../api/comments/commentDeleteController
+    arguments: ['@Comments.application.CommentDeleter']
+
+  Controllers.comments.CommentGetController:
+    class: ../../../../api/comments/commentGetController
+    arguments: ['@Comments.application.CommentFinder']

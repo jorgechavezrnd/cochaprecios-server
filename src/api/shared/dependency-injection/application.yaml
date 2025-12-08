@@ -7,3 +7,4 @@ imports:
   - { resource: ./stores/application.yaml }
   - { resource: ./prices/application.yaml }
   - { resource: ./likes/application.yaml }
+  - { resource: ./comments/application.yaml }

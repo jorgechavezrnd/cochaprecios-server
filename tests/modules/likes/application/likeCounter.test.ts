@@ -33,4 +33,16 @@ describe('LikeCounter', () => {
 
     expect(result.count).toBe(0);
   });
+
+  it('should return correct count for product with many likes', async () => {
+    const productId = UuidMother.random();
+    const storeId = UuidMother.random();
+    const expectedCount = 1000;
+
+    repository.whenCountByProductStoreReturn(expectedCount);
+
+    const result = await counter.run({ productId, storeId });
+
+    expect(result.count).toBe(expectedCount);
+  });
 });

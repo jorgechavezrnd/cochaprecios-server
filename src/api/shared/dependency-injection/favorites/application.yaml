@@ -1,0 +1,28 @@
+services:
+  Favorites.domain.FavoriteRepository:
+    class: ../../../../modules/favorites/infrastructure/persistence/typeOrmFavoriteRepository
+    arguments: ['@Shared.ConnectionManager']
+
+  Favorites.application.FavoriteCreator:
+    class: ../../../../modules/favorites/application/favoriteCreator
+    arguments: ['@Favorites.domain.FavoriteRepository']
+
+  Favorites.application.FavoriteDeleter:
+    class: ../../../../modules/favorites/application/favoriteDeleter
+    arguments: ['@Favorites.domain.FavoriteRepository']
+
+  Favorites.application.FavoriteFinder:
+    class: ../../../../modules/favorites/application/favoriteFinder
+    arguments: ['@Favorites.domain.FavoriteRepository']
+
+  Controllers.favorites.FavoritePutController:
+    class: ../../../../api/favorites/favoritePutController
+    arguments: ['@Favorites.application.FavoriteCreator']
+
+  Controllers.favorites.FavoriteDeleteController:
+    class: ../../../../api/favorites/favoriteDeleteController
+    arguments: ['@Favorites.application.FavoriteDeleter']
+
+  Controllers.favorites.FavoriteGetController:
+    class: ../../../../api/favorites/favoriteGetController
+    arguments: ['@Favorites.application.FavoriteFinder']

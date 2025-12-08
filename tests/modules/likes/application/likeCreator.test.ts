@@ -46,4 +46,38 @@ describe('LikeCreator', () => {
     // Should not save if already exists
     expect(repository['mockSave']).not.toHaveBeenCalled();
   });
+
+  it('should create like for same user on different product', async () => {
+    const userId = UuidMother.random();
+    const productId1 = UuidMother.random();
+    const productId2 = UuidMother.random();
+    const storeId = UuidMother.random();
+
+    repository.whenFindByUserAndProductStoreReturn(null);
+
+    // First like
+    await creator.run({ id: UuidMother.random(), productId: productId1, storeId, userId });
+
+    // Second like on different product
+    await creator.run({ id: UuidMother.random(), productId: productId2, storeId, userId });
+
+    expect(repository['mockSave']).toHaveBeenCalledTimes(2);
+  });
+
+  it('should create like for different users on same product', async () => {
+    const userId1 = UuidMother.random();
+    const userId2 = UuidMother.random();
+    const productId = UuidMother.random();
+    const storeId = UuidMother.random();
+
+    repository.whenFindByUserAndProductStoreReturn(null);
+
+    // First user likes
+    await creator.run({ id: UuidMother.random(), productId, storeId, userId: userId1 });
+
+    // Second user likes same product
+    await creator.run({ id: UuidMother.random(), productId, storeId, userId: userId2 });
+
+    expect(repository['mockSave']).toHaveBeenCalledTimes(2);
+  });
 });
